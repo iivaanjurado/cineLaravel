@@ -1,0 +1,8 @@
+1. Git clone url_repositorio
+2. Cortar los archivos del proyecto a la raíz htdocs -> limpiar los archivos de la carpeta clonada y meterlos en htdocs
+3. npm install y composer install
+4. renombrar .env-example a .env -> configura puerto y nombre de bbdd
+5. php artisan migrate
+6. php artisan key generator (laravel necesita una id de encriptación, transparente para nosotros)
+7. meter el archivo htaccess en la raiz si no existe.
+

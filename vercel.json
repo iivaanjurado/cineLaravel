@@ -25,8 +25,8 @@
     "env": {
         "APP_ENV": "production",
         "APP_DEBUG": "true",
-        "APP_URL": "https://XXXXXXX.vercel.app",
-        "APP_KEY": "XXXXXXXXXXXXX",
+        "APP_URL": "https://cine-laravel-2cm1.vercel.app",
+        "APP_KEY": "base64:9Ynn04g8IC1tlByea0Djy5gImco+YuN4gKPPNzJB0CU=",
         "APP_CONFIG_CACHE": "/tmp/config.php",
         "APP_EVENTS_CACHE": "/tmp/events.php",
         "APP_PACKAGES_CACHE": "/tmp/packages.php",

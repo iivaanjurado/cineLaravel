@@ -8,8 +8,17 @@
     @vite(['resources/css/app.css','resources/js/app.js'])
 </head>
 <body>
-    <div>
-        <p class="text-red-400">Prueba de Tailwind</p>
+    <div class="w-full h-48 bg-gray-800">
+        <h1>FilmBox</h1>
     </div>
+    
+    <div id="peliculas">
+    
+    </div>
+    
+    <div >
+    
+    </div>
+    
 </body>
 </html>

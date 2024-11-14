@@ -8,6 +8,9 @@
     @vite(['resources/css/app.css','resources/js/app.js'])
 </head>
 <body>
+
+
+
     <div class="w-full h-48 bg-gray-800">
         <h1>FilmBox</h1>
     </div>

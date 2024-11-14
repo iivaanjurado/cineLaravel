@@ -9,7 +9,7 @@ class Sala extends Model
 {
     use HasFactory;
     
-    protected $primaryKey = 'idSala'; 
+    protected $primaryKey = 'id'; 
     protected $fillable = ['pelicula'];
 
     public function asientos(){

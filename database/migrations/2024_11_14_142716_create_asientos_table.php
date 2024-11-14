@@ -16,8 +16,8 @@ return new class extends Migration
             $table->integer('fila');
             $table->integer('columna');
             $table->boolean('reservado')->default(false); // true reservado, false libre
-            $table->unsignedBigInteger('idSala');
-            $table->foreign('idSala')->references('id')->on('salas');
+            $table->unsignedBigInteger(column: 'idSala');
+            $table->foreign(columns: 'idSala')->references('id')->on('salas');
             $table->timestamps();
 
         });

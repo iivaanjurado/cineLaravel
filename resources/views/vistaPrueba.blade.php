@@ -4,25 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Cine</title>
     @vite(['resources/css/app.css','resources/js/app.js'])
 </head>
 <body class="flex flex-col min-h-screen overflow-hidden">
 
-    <div class="w-full h-28 bg-gray-800 flex items-center justify-center">
-      <h1 class="text-6xl text-green-400">FilmBox</h1>
+    <div class="bg-gradient-to-r from-red-300 to-red-600 h-32 w-full flex items-center justify-center">
+      <h1 class="text-6xl text-gray-800">FilmBox</h1>
+      <img src="{{ asset('logo.png') }}">
     </div>
 
     <div id="peliculas" class="w-full flex-grow">
 
     </div>
 
+    <div>
+        <h2>Insertar Sala</h2>
+        <form action="">
+            
+        </form>
+    </div>
+
+
+
     <footer class="bg-gray-800 text-white flex flex-col items-center justify-center text-center py-2 space-y-4">
 
       
         <div class="flex space-x-6">
             <div class="bg-white p-2 rounded-full">
-                <img class="h-8 w-8" src="/instagram.png" alt="Instagram">
+                <img class="h-8 w-8"  src="{{ asset('instagram.png') }}" alt="Instagram">
             </div>
             <div class="bg-white p-2 rounded-full">
                 <img class="h-8 w-8" src="/x.png" alt="X">

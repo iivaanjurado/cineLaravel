@@ -12,3 +12,6 @@ Route::get('/cartelera', function () {
 Route::get('/insertar-sala', function () {
     return view('insertarSala');
 });
+Route::get('/asientos', function () {
+    return view('asientos');
+});

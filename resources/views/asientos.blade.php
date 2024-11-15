@@ -4,30 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Cine</title>
+    <title>Asientos</title>
     @vite(['resources/css/app.css','resources/js/app.js'])
+    <style></style>
 </head>
 <body class="flex flex-col min-h-screen overflow-hidden">
 
-    <div class="bg-gradient-to-l from-pink-400 to-blue-600 h-34 w-full flex items-center justify-between px-8">
-        <div class="flex items-center">
-            <img src="{{ asset('logo.png') }}" class="h-34 mr-4">
-        </div>
-        <h1 class="text-6xl text-gray-100 font-mono italic mx-auto">FilmBox</h1>
-        <div class="flex items-center space-x-2">
-            <a href="/cartelera" class="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition-colors">Cartelera</a>
-            <a href="/insertar-sala" class="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition-colors">Insertar Sala</a>
+    <div class="mx-64 my-20">
+        <h2><b>Cine: </b>FilmBox</h2>
+        <hr class="bg-gradient-to-l from-pink-400 to-blue-600 h-1 w-64 rounded-full">
+        <br>
+        <div class="flex items-center justify-start space-x-10"> 
+            <div class="flex flex-col items-start">
+                <h2><b>Pelicula: </b>Pelicula 3</h2>
+                <hr class="bg-gradient-to-l from-pink-400 to-blue-600 h-1 w-48 rounded-full">
+            </div>
+            <div class="flex flex-col items-start">
+                <h2><b>Sala: </b>Sala 4</h2>
+                <hr class="bg-gradient-to-l from-pink-400 to-blue-600 h-1 w-48 rounded-full">
+            </div>
+            <div class="flex flex-col items-start">
+                <h2><b>Hora: </b>19:45</h2>
+                <hr class="bg-gradient-to-l from-pink-400 to-blue-600 h-1 w-48 rounded-full">
+            </div>
         </div>
     </div>
     
+    
+       
 
-    <div id="peliculas" class="w-full flex-grow">
+    <div id="asientos" class="w-full flex-grow">
 
     </div>
 
-
     <footer class="bg-gray-300 flex flex-col items-center justify-center text-center py-2 space-y-4">
-
       
         <div class="flex space-x-6">
             <div class="bg-white p-2 rounded-full">

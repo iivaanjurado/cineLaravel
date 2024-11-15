@@ -31,7 +31,7 @@
       
         <div class="flex space-x-6">
             <div class="bg-white p-2 rounded-full">
-                <img class="h-4 w-4"  src="{{ asset('instagram.png') }}" alt="Instagram">
+                <img class="h-4 w-4"  src="/instagram.png" alt="Instagram">
             </div>
             <div class="bg-white p-2 rounded-full">
                 <img class="h-4 w-4" src="/x.png" alt="X">

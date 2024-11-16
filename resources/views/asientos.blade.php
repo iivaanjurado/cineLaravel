@@ -6,7 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Asientos</title>
     @vite(['resources/css/app.css','resources/js/app.js'])
-    <style></style>
 </head>
 <body class="flex flex-col min-h-screen overflow-hidden">
 

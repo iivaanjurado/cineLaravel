@@ -11,7 +11,7 @@
 
     <div class="bg-gradient-to-l from-pink-400 to-blue-600 h-34 w-full flex items-center justify-between px-8">
         <div class="flex items-center">
-            <img src="{{ asset('logo.png') }}" class="h-34 mr-4">
+            <img src="/logo.png" class="h-32 mr-4">
         </div>
         <h1 class="text-6xl text-gray-100 font-mono italic mx-auto">FilmBox</h1>
         <div class="flex items-center space-x-2">

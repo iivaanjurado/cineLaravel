@@ -51,7 +51,7 @@ class SalaController extends Controller
         //valido que el id exista en la tabla salas, si existen en salas existe en asientos
         //param1(data), param2(rules), param3(messages)
         $validator = Validator::make(['id' => $id], [
-            'id' => 'required | exists:salas,id'
+            'id' => ' exists:salas,id'
         ]);
 
         if ($validator->fails()) {
@@ -109,7 +109,7 @@ class SalaController extends Controller
         //hago la validacion
         $validator = Validator::make(['titulo' => $titulo], [
         
-            'titulo' => 'required|string|max:255'
+            'titulo' => 'string|max:255|unique:salas,titulo'
         ]);
 
         //check validación
@@ -192,7 +192,7 @@ class SalaController extends Controller
         $validator = Validator::make(['titulo' => $titulo], [
         
             //formato valido y exists
-            'titulo' => 'required|string|max:255|exists:salas,pelicula'
+            'titulo' => 'string|max:255|exists:salas,pelicula'
         ]);
 
 
@@ -226,7 +226,7 @@ class SalaController extends Controller
         
         //valido que el id exista en la tabla salas, si existen en salas existe en asientos
         $validator = Validator::make(['id' => $id], [
-            'id' => 'required | exists:salas,id'
+            'id' => 'exists:salas,id'
         ]);
 
         if($validator->fails()){

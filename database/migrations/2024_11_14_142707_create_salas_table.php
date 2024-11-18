@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('salas', function (Blueprint $table) {
             $table->id();
             $table->string('pelicula');
+            $table->string('enlaceImg');
+            $table->string('sinopsis');
             $table->timestamps();
         });
     }

@@ -10,7 +10,9 @@ Route::get('/', function() {
 });
 
 //---------------------------------------
-//todo renombrar las rutas, separar validación y controlador??, toast, delete on cascade de asientos, si no valida lanza error, si valida ejecuta controlador pero si hay algún error en la consulta o asi? hay que retonar una vista + json creo q es se va requerir? + !toastjs? | -get() te da una conjunto a pesar d q se usa con where, metodos no funcionan con conjuntos
+///// todo renombrar las rutas, separar validación y controlador-> no, toastjs -> front, delete on cascade de asientos, si no valida lanza error, si valida ejecuta controlador pero si hay algún error en la consulta o asi?->se comprueba de nuevo la consulta. Hay que retonar una vista + json creo q es se va requerir->no, las vistas se hacen con fetch para no recargar. toastjs? ->en front | -get() te da una conjunto a pesar d q se usa con where, metodos no funcionan con conjuntos
+
+/////todo validar titulo existente en bbdd para no insertar
 
 //?actualizar sala es necesarii
 
@@ -24,6 +26,9 @@ Route::get('/select_sala_id/{id}',  [SalaController::class, 'select_sala_id'])->
 
 //insert sala por titulo
 Route::get('/insert_sala_titulo/{titulo}',  [SalaController::class, 'insert_sala_titulo'])->name('insertar_sala_titulo');
+
+//insert sala por titulo
+Route::get('/insert_sala',  [SalaController::class, 'insertar_sala'])->name('insertar_sala');
 
 //!colision /el_sala/{param}
 //eliminar sala por titulo

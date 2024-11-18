@@ -20,19 +20,19 @@
             <a href="/modificar-sala" class="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition-colors">Modificar Sala</a>
         </div>
     </div>
-    
+
     <div class="flex-grow flex items-center justify-center bg-gray-100">
-        <form action="" class="bg-white shadow-md rounded-lg p-8 max-w-md w-full">
+        <form action="/api/insert_sala" class="bg-white shadow-md rounded-lg p-8 max-w-md w-full">
             <h2 class="text-2xl font-bold mb-6 text-center text-gray-800">Insertar Sala</h2>
             <div class="mb-6">
-                <label for="movie" class="block mb-2 text-sm font-medium text-gray-700">Selecciona una película</label>
-                <select id="movie" name="movie" class="w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none focus:border-blue-500">
-                    <option value="" disabled selected>Elige una película</option>
-                    <option value="Super Salidos">Super Salidos</option>
-                    <option value="8 Apellidos Vascos">8 Apellidos Vascos</option>
-                    <option value="El Orfanato">El Orfanato</option>
-                    <option value="IT">IT</option>
-                </select>
+                <label for="titulo">Titulo de la Película:</label>
+                <input type="text" name="titulo" id="titulo">
+                <label for="">Enlace del cartel</label>
+                <input type="text" name="enlace" id="enlace">
+                <label for="sinopsis">Sinopsis</label>
+                <textarea name="sinopsis" id="sinopsis" cols="30" rows="10">
+
+                </textarea>
             </div>
             <button type="submit" class="w-full bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
                 Insertar sala
@@ -52,7 +52,7 @@
                 <img class="h-4 w-4" src="/facebook.png" alt="Facebook">
             </div>
         </div>
-        
+
         <hr class="w-1/4 border-gray-900">
 
         <div  class="flex space-x-6 text-black">

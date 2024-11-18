@@ -18,3 +18,4 @@ Route::get('/insertar-sala', function () {
 // -----------------------rutas api-controlador
 
 Route::get('/demo_select', [SalaController::class, 'select']);
+

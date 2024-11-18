@@ -16,7 +16,8 @@
         <a href="/cartelera"><h1 class="text-6xl text-gray-100 font-mono italic mx-auto">FilmBox</h1></a>
         <div class="flex items-center space-x-2">
             <a href="/insertar-sala" class="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition-colors">Insertar Sala</a>
-            <a href="/eliminar-sala" class="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition-colors">Elimiar Sala</a>
+            <a href="/eliminar-sala" class="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition-colors">Eliminar Sala</a>
+            <a href="/modificar-sala" class="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition-colors">Modificar Sala</a>
         </div>
     </div>
 

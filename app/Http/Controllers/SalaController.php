@@ -113,7 +113,7 @@ class SalaController extends Controller
         $validator = Validator::make(['pelicula' => $titulo, 'sinopsis' => $sinopsis, 'enlaceImg' => $enlace], [
             'pelicula' => 'required | string | max:255 | unique:salas,pelicula',
             'sinopsis' => 'required | string | max:255',
-            'enlaceImg' => 'required | string | max:255'
+            'enlaceImg' => 'required | url | string | max:255'
         ], []);
 
 
@@ -183,6 +183,7 @@ class SalaController extends Controller
         }
     }
 
+    //todo modificar y eliminar
 
     //insert sala y sus asientos por titulo
     public function insert_sala_titulo($titulo)
@@ -191,7 +192,7 @@ class SalaController extends Controller
         //hago la validacion
         $validator = Validator::make(['titulo' => $titulo], [
 
-            'titulo' => 'string|max:255|unique:salas,titulo'
+            'titulo' => 'string | max:255 |unique:salas,titulo'
         ]);
 
         //check validación
@@ -260,8 +261,69 @@ class SalaController extends Controller
         }
     }
 
+    //update campos de sala por request
+    public function update_sala(Request $request){
+
+        //get datos del request (valor atributo name en inputs front)
+        $titulo = $request->input('titulo');
+        $sinopsis = $request->input('sinopsis');
+        $enlace = $request->input('enlace');
+
+         /* $titulo = 'Garfield';
+        $sinopsis = 'vetesaber';
+        $enlace = 'https://dubaitickets.tours/wp-content/uploads/2023/03/img-worlds-of-adventure-dubai-ticket-9.jpg';
+ */
+        //valido la entrada
+        // $validator = Validator::make($request->all())
+        $validator = Validator::make(['pelicula' => $titulo, 'sinopsis' => $sinopsis, 'enlaceImg' => $enlace], [
+            'pelicula' => 'required | string | max:255 | exists:salas,pelicula',
+            'sinopsis' => 'required | string | max:255',
+            'enlaceImg' => 'required | url | string | max:255'
+        ], []);
+
+
+        if ($validator->fails()) {
+
+            $data = [
+                'message' => 'Error en la validación',
+                'errors' => $validator->errors()
+
+            ];
+
+            return response()->json($data, 200);
+
+        }else{//validacion correcta
+
+            //recupero el registro
+            $sala = Sala::where('pelicula', $titulo)->first();
+
+            $sala->pelicula = $titulo;
+            $sala->sinopsis = $sinopsis;
+            $sala->enlaceImg = $enlace;
+
+            $b = $sala->save();
+
+            if($b){
+
+                $data = [
+                    'message' => 'Sala actualizada con éxito'
+                ];
+
+                return response()->json($data, 200);
+
+            }else{
+
+                $data = [
+                    'message' => 'Error en la consulta, sala no actualizada'
+                ];
+
+                return response()->json($data, 400);
+            }
+        }
+    }
+
+    /////?delete on cascade?
     //eliminar sala y sus asientos por titulo
-    //?delete on cascade?
 
     public function delete_sala_titulo($titulo)
     {
@@ -349,4 +411,12 @@ class SalaController extends Controller
             }
         }
     }
+
+
+
+
+
+
+
+
 }

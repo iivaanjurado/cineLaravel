@@ -18,18 +18,10 @@
 
     </div>
 
-    <div>
-        <h2>Insertar Sala</h2>
-        <form action="">
-            
-        </form>
-    </div>
-
-
 
     <footer class="bg-gray-800 text-white flex flex-col items-center justify-center text-center py-2 space-y-4">
 
-      
+
         <div class="flex space-x-6">
             <div class="bg-white p-2 rounded-full">
                 <img class="h-8 w-8"  src="{{ asset('instagram.png') }}" alt="Instagram">
@@ -41,7 +33,7 @@
                 <img class="h-8 w-8" src="/facebook.png" alt="Facebook">
             </div>
         </div>
-        
+
         <hr class="w-1/4 border-gray-400">
 
         <div  class="flex space-x-6">

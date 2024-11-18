@@ -7,46 +7,55 @@
     <title>Modificar Sala</title>
     @vite(['resources/css/app.css','resources/js/app.js'])
 </head>
-<body class="flex flex-col min-h-screen overflow-hidden">
+<body class="flex flex-col min-h-screen overflow-y-auto">
 
-    <div class="bg-gradient-to-l from-pink-400 to-blue-600 h-34 w-full flex items-center justify-between px-8 relative">
-        <div class="flex items-center">
-            <a href="/cartelera"><img src="/logo.png" class="h-32 mr-4" alt="FilmBox Logo"></a>
+    <div class="bg-gradient-to-l from-pink-400 to-blue-600 h-34 w-full flex items-center px-8 mb-6  ">
+        <div class="flex-1 flex items-center">
+            <a href="/cartelera"><img src="/logo.png" class="h-32" alt="FilmBox Logo"></a>
         </div>
-        <a href="/cartelera" class="absolute left-1/2 transform -translate-x-1/2">
-            <h1 class="text-6xl text-gray-100 font-mono italic">FilmBox</h1>
-        </a>
-        <div class="flex items-center space-x-2">
+        <div class="flex-1 flex justify-center items-center">
+            <a href="/cartelera">
+                <h1 class="text-6xl text-gray-100 font-mono italic">FilmBox</h1>
+            </a>
+        </div>
+        <div class="flex-1 flex items-center justify-end space-x-2">
             <a href="/insertar-sala" class="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition-colors">Insertar Sala</a>
             <a href="/eliminar-sala" class="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition-colors">Eliminar Sala</a>
             <a href="/modificar-sala" class="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition-colors">Modificar Sala</a>
         </div>
     </div>
 
-    <div class="flex-grow flex items-center justify-center bg-gray-100">
+    <div class="flex-grow flex items-center justify-center bg-gray-100 py-12">
+
         <form action="" class="bg-white shadow-md rounded-lg p-8 max-w-md w-full">
             <h2 class="text-2xl font-bold mb-6 text-center text-gray-800">Modificar Sala</h2>
-            <div class="mb-6">
+            <div class="mb-4">
                 <label for="movie" class="block mb-2 text-sm font-medium text-gray-700">Selecciona una película</label>
                 <select id="movie" name="movie" class="w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none focus:border-blue-500">
                 </select>
             </div>
-            <label for="titulo">Titulo:</label>
-            <input class="" type="text" name="titulo" id="titulo">
-            <label for="enlace">Url:</label>
-            <input type="text" name="enlace" id="enlace">
-            <label for="sinopsis">Sinopsis</label>
-            <input type="text" name="sinopsis" id="sinopsis">
+            <div class="mb-4">
+                <label for="titulo" class="block mb-2 text-sm font-medium text-gray-700">Titulo:</label>
+                <input class="w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none focus:border-blue-500" type="text" name="titulo" id="titulo">
+            </div>
+            <div class="mb-4">
+                <label for="enlace" class="block mb-2 text-sm font-medium text-gray-700">Url:</label>
+                <input class="w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none focus:border-blue-500" type="text" name="enlace" id="enlace">
+            </div>
+            <div class="mb-6">
+                <label for="sinopsis" class="block mb-2 text-sm font-medium text-gray-700">Sinopsis:</label>
+                <textarea class="w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none focus:border-blue-500" name="sinopsis" id="sinopsis" rows="4"></textarea>
+            </div>
             <button type="submit" class="w-full bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
                 Modificar sala
             </button>
         </form>
     </div>
 
-    <footer class="bg-gray-300 flex flex-col items-center justify-center text-center py-2 space-y-4">
+    <footer class="bg-gray-300 flex flex-col items-center justify-center text-center py-4 space-y-4 mt-4">
         <div class="flex space-x-6">
             <div class="bg-white p-2 rounded-full">
-                <img class="h-4 w-4"  src="/instagram.png" alt="Instagram">
+                <img class="h-4 w-4" src="/instagram.png" alt="Instagram">
             </div>
             <div class="bg-white p-2 rounded-full">
                 <img class="h-4 w-4" src="/x.png" alt="X">
@@ -58,7 +67,7 @@
 
         <hr class="w-1/4 border-gray-900">
 
-        <div  class="flex space-x-6 text-black">
+        <div class="flex space-x-6 text-black">
             <p>Terminos y Condiciones</p>
             <p>Contacto</p>
             <p>Politica y Privacidad</p>

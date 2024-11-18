@@ -25,15 +25,15 @@
     </div>
 
 
-
     <div id="peliculas" class="w-full flex-grow">
 
     </div>
+    <div id="contenido"></div>
 
 
     <footer class="bg-gray-300 flex flex-col items-center justify-center text-center py-2 space-y-4">
 
-      
+
         <div class="flex space-x-6">
             <div class="bg-white p-2 rounded-full">
                 <img class="h-4 w-4"  src="/instagram.png" alt="Instagram">
@@ -45,7 +45,7 @@
                 <img class="h-4 w-4" src="/facebook.png" alt="Facebook">
             </div>
         </div>
-        
+
         <hr class="w-1/4 border-gray-900">
 
         <div  class="flex space-x-6 text-black">

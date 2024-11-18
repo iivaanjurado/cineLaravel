@@ -22,34 +22,26 @@
             <a href="/modificar-sala" class="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition-colors">Modificar Sala</a>
         </div>
     </div>
-    
+
     <div class="flex-grow flex items-center justify-center bg-gray-100">
         <form action="" class="bg-white shadow-md rounded-lg p-8 max-w-md w-full">
             <h2 class="text-2xl font-bold mb-6 text-center text-gray-800">Modificar Sala</h2>
             <div class="mb-6">
                 <label for="movie" class="block mb-2 text-sm font-medium text-gray-700">Selecciona una película</label>
-                <select id="movie" name="movie" class="w-full px-3 py-2 text-gray-700 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500">
-                    <option value="" disabled selected>Elige una película</option>
-                    <option value="Super Salidos">Super Salidos</option>
-                    <option value="8 Apellidos Vascos">8 Apellidos Vascos</option>
-                    <option value="El Orfanato">El Orfanato</option>
-                    <option value="IT">IT</option>
+                <select id="movie" name="movie" class="w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none focus:border-blue-500">
                 </select>
             </div>
-            <div class="mb-6">
-                <label for="title" class="block mb-2 text-sm font-medium text-gray-700">Titulo:</label>
-                <input id="title" class="w-full px-3 py-2 text-gray-700 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500" type="text" name="title">
-            </div>
-            <div class="mb-6">
-                <label for="url" class="block mb-2 text-sm font-medium text-gray-700">Url:</label>
-                <input id="url" class="w-full px-3 py-2 text-gray-700 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500" type="text" name="url">
-            </div>
+            <label for="titulo">Titulo:</label>
+            <input class="" type="text" name="titulo" id="titulo">
+            <label for="enlace">Url:</label>
+            <input type="text" name="enlace" id="enlace">
+            <label for="sinopsis">Sinopsis</label>
+            <input type="text" name="sinopsis" id="sinopsis">
             <button type="submit" class="w-full bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
                 Modificar sala
             </button>
         </form>
     </div>
-    
 
     <footer class="bg-gray-300 flex flex-col items-center justify-center text-center py-2 space-y-4">
         <div class="flex space-x-6">
@@ -63,7 +55,7 @@
                 <img class="h-4 w-4" src="/facebook.png" alt="Facebook">
             </div>
         </div>
-        
+
         <hr class="w-1/4 border-gray-900">
 
         <div  class="flex space-x-6 text-black">

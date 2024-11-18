@@ -11,11 +11,10 @@
 
     <div class="bg-gradient-to-l from-pink-400 to-blue-600 h-34 w-full flex items-center justify-between px-8">
         <div class="flex items-center">
-            <img src="/logo.png" class="h-32 mr-4">
+            <a href="/cartelera"><img src="/logo.png" class="h-32 mr-4"></a>
         </div>
-        <h1 class="text-6xl text-gray-100 font-mono italic mx-auto">FilmBox</h1>
+        <a href="/cartelera"><h1 class="text-6xl text-gray-100 font-mono italic mx-auto">FilmBox</h1></a>
         <div class="flex items-center space-x-2">
-            <a href="/cartelera" class="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition-colors">Cartelera</a>
             <a href="/insertar-sala" class="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition-colors">Insertar Sala</a>
             <a href="/eliminar-sala" class="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition-colors">Elimiar Sala</a>
         </div>

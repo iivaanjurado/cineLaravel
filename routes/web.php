@@ -18,3 +18,7 @@ Route::get('/asientos', function () {
 Route::get('/eliminar-sala', function () {
     return view('eliminarSala');
 });
+Route::get('/modificar-sala', function () {
+    return view('modificarSala');
+});
+

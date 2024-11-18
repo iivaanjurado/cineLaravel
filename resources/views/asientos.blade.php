@@ -32,7 +32,7 @@
     
        
 
-    <div id="asientos" class="w-full flex-grow">
+    <div id="asientos" class="">
 
     </div>
 

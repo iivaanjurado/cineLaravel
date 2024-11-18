@@ -17,6 +17,7 @@
         <div class="flex items-center space-x-2">
             <a href="/cartelera" class="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition-colors">Cartelera</a>
             <a href="/insertar-sala" class="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition-colors">Insertar Sala</a>
+            <a href="/eliminar-sala" class="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition-colors">Elimiar Sala</a>
         </div>
     </div>
     

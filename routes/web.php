@@ -15,3 +15,6 @@ Route::get('/insertar-sala', function () {
 Route::get('/asientos', function () {
     return view('asientos');
 });
+Route::get('/eliminar-sala', function () {
+    return view('eliminarSala');
+});

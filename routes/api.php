@@ -27,6 +27,9 @@ Route::get('/select_sala_id/{id}',  [SalaController::class, 'select_sala_id'])->
 //insert sala por titulo
 Route::get('/insert_sala_titulo/{titulo}',  [SalaController::class, 'insert_sala_titulo'])->name('insertar_sala_titulo');
 
+//insert sala por titulo
+Route::get('/insert_sala',  [SalaController::class, 'insertar_sala'])->name('insertar_sala');
+
 //!colision /el_sala/{param}
 //eliminar sala por titulo
 Route::get('/delete_sala_titulo/{titulo}',  [SalaController::class, 'delete_sala_titulo'])->name('delete_sala_titulo');

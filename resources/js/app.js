@@ -43,23 +43,21 @@ function renderizarPeliculas(peliculas) {
 // Función para mostrar los asientos
 function mostrarAsientos(idSala) {
   // Ocultar la cartelera de películas
-  cartelera.style.display = 'none';
+  cartelera.style.display = '';
 
   // Mostrar el contenido de los asientos
-  contenido.innerHTML = `
-    <div class="flex justify-between items-center mb-4">
-      <button id="atras" class="px-4 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600">Atrás</button>
-      <h2 class="text-xl font-semibold">Asientos Disponibles en la sala ${idSala}</h2>
-    </div>
-  `;
+  contenido.innerHTML = `<div class="flex justify-between items-center mb-4"><button id="atras" class="px-4 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600">Atrás</button><h2 class="text-xl font-semibold">Asientos Disponibles en la sala ${idSala}</h2> </div>`;
 
   // Agregar evento al botón de "Atrás"
   const botonAtras = document.getElementById('atras');
+
   botonAtras.addEventListener('click', () => {
+
     volverAPeliculas();
   });
 
   fetch(`http://localhost:8080/public/api/select_sala_id/${idSala}`)
+
     .then((response) => {
       if (!response.ok) {
         throw new Error('Error al obtener los asientos: ' + response.status);
@@ -82,7 +80,7 @@ let asientosSeleccionados = [];
 // Función para pintar los asientos
 function renderizarAsientosGrid(asientos) {
   const contenedorAsientos = document.createElement('div');
-  contenedorAsientos.classList.add('grid', 'grid-cols-10', 'gap-2', 'w-full', 'max-w-xl', 'mx-auto', 'mb-6'); // Tailwind grid para 10 columnas
+  contenedorAsientos.classList.add('grid', 'grid-cols-10', 'gap-2', 'w-full', 'max-w-xl', 'mx-auto', 'mb-6');
 
   asientos.forEach((asiento) => {
     const asientoDiv = document.createElement('div');
@@ -105,6 +103,7 @@ function renderizarAsientosGrid(asientos) {
           asientosSeleccionados = asientosSeleccionados.filter((id) => id !== asiento.id);
         }
       });
+
     } else {
       asientoDiv.classList.add('bg-gray-500', 'cursor-not-allowed');
       const img = document.createElement('img');

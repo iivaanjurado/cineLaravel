@@ -217,7 +217,7 @@ class SalaController extends Controller
             $sala->pelicula = $titulo;
 
             //?podria gettear el id de la sala en éste punto? no hay store asiq no se ha generado, si save la variable no conoce aun el valor, hay que hacer select (143)
-            //guardo 
+            //guardo
             $sala->save();
 
             //con tabla sala creada, creo tabla asientos
@@ -276,7 +276,7 @@ class SalaController extends Controller
         //valido la entrada
         // $validator = Validator::make($request->all())
         $validator = Validator::make(['pelicula' => $titulo, 'sinopsis' => $sinopsis, 'enlaceImg' => $enlace], [
-            'pelicula' => 'required | string | max:255 | exists:salas,pelicula',
+            'pelicula' => 'required | string | max:255' ,
             'sinopsis' => 'required | string | max:255',
             'enlaceImg' => 'required | url | string | max:255'
         ], []);

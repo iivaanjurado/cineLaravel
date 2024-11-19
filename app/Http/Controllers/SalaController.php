@@ -111,7 +111,7 @@ class SalaController extends Controller
         //valido la entrada
         // $validator = Validator::make($request->all())
         $validator = Validator::make(['pelicula' => $titulo, 'sinopsis' => $sinopsis, 'enlaceImg' => $enlace], [
-            'pelicula' => 'required | string | max:255 | unique:salas,pelicula',
+            'pelicula' => 'required | string | max:255 | unique:salas,pelicula' ,
             'sinopsis' => 'required | string | max:255',
             'enlaceImg' => 'required | url | string | max:255'
         ], []);
@@ -206,6 +206,7 @@ class SalaController extends Controller
 
             //retorno respuesta json + codigo error en la solicitud
             return response()->json($data, 400);
+            
         } else { //si validación correcta
 
             //insert registro sala y registros asientos
@@ -242,6 +243,7 @@ class SalaController extends Controller
                     'message' => ' No se encontró ninguna sala con ese id',
                     'status' => 200
                 ];
+
             } elseif ($asientos->isEmpty()) {
                 $asientos = [
                     'message' => ' No se encontraron asientos para esa sala',
@@ -265,18 +267,22 @@ class SalaController extends Controller
     public function update_sala(Request $request){
 
         //get datos del request (valor atributo name en inputs front)
-        $titulo = $request->input('titulo');
-        $sinopsis = $request->input('sinopsis');
-        $enlace = $request->input('enlace');
+        $id = $request['id'];
+        $titulo = $request['titulo'];
+        $sinopsis = $request['sinopsis'];
+        $enlace = $request['enlace'];
 
-         /* $titulo = 'Garfield';
-        $sinopsis = 'vetesaber';
-        $enlace = 'https://dubaitickets.tours/wp-content/uploads/2023/03/img-worlds-of-adventure-dubai-ticket-9.jpg';
- */
+        /* $id = 5;
+        $titulo = 'Interstellar 2';
+        $sinopsis = 'Vuelve intelesstelar';
+        $enlace = 'https://dubaitickets.tours/wp-content/uploads/2023/03/img-worlds-of-adventure-dubai-ticket-9.jpg'; */
+       
+
+
         //valido la entrada
         // $validator = Validator::make($request->all())
         $validator = Validator::make(['pelicula' => $titulo, 'sinopsis' => $sinopsis, 'enlaceImg' => $enlace], [
-            'pelicula' => 'required | string | max:255 | exists:salas,pelicula',
+            'pelicula' => 'required | string | max:255',
             'sinopsis' => 'required | string | max:255',
             'enlaceImg' => 'required | url | string | max:255'
         ], []);
@@ -295,29 +301,41 @@ class SalaController extends Controller
         }else{//validacion correcta
 
             //recupero el registro
-            $sala = Sala::where('pelicula', $titulo)->first();
+            $sala = Sala::where('id', $id)->first();
 
-            $sala->pelicula = $titulo;
-            $sala->sinopsis = $sinopsis;
-            $sala->enlaceImg = $enlace;
-
-            $b = $sala->save();
-
-            if($b){
+            if (is_null($sala)) {
 
                 $data = [
-                    'message' => 'Sala actualizada con éxito'
-                ];
-
-                return response()->json($data, 200);
-
-            }else{
-
-                $data = [
-                    'message' => 'Error en la consulta, sala no actualizada'
+                    'message' => 'No se encontró ninguna sala',
                 ];
 
                 return response()->json($data, 400);
+
+            } else {//si encuentra la sala
+
+                $sala->pelicula = $titulo;
+                $sala->sinopsis = $sinopsis;
+                $sala->enlaceImg = $enlace;
+
+                $b = $sala->save();
+
+                if ($b) {
+
+                    $data = [
+                        'message' => 'Sala actualizada con éxito'
+                    ];
+
+                    return response()->json($data, 200);
+
+                } else {
+
+                    $data = [
+                        'message' => 'Error en la consulta, sala no actualizada'
+                    ];
+
+                    return response()->json($data, 400);
+
+                }
             }
         }
     }
@@ -379,6 +397,7 @@ class SalaController extends Controller
 
             //retorno respuesta json + codigo error en la solicitud
             return response()->json($data, 400);
+
         } else { //si validación correcta
 
             //elimino la tabla que corresponda al id, asientos se eliminan por cascade

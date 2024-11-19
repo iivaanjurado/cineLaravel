@@ -15,7 +15,6 @@ class AsientoSeeder extends Seeder
      */
     public function run(): void
     {
-     
         $salas = Sala::all(); 
         $numFilas = 5;
         $numColumnas = 10; 

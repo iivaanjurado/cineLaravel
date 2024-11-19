@@ -14,28 +14,27 @@ class SalaFactory extends Factory
         'American Pie',
         'Torrente: El brazo tonto de la ley',
         'Garfield',
-        'Interstellar',
+        'Interestelar',
         'Frozen II',
         'Scary Movie',
         'Regreso al futuro',
         'Niños grandes'
     ];
     protected $enlaceImagenes = [
-        'American Pie' => 'https://pics.filmaffinity.com/American_Pie-192121266-large.jpg',
-        'Torrente: El brazo tonto de la ley' => 'https://pics.filmaffinity.com/Torrente_el_brazo_tonto_de_la_ley-769153589-large.jpg',
-        'Garfield' => 'https://pics.filmaffinity.com/Garfield_La_pelaicula-129098716-large.jpg',
-        'Interstellar' => 'https://pics.filmaffinity.com/Interstellar-832932589-large.jpg',
-        'Frozen II' => 'https://pics.filmaffinity.com/Frozen_II-725228283-mmed.jpg',
-        'Scary Movie' => 'https://pics.filmaffinity.com/Scary_Movie-943532513-large.jpg',
-        'Regreso al futuro' => 'https://pics.filmaffinity.com/Scary_Movie-943532513-large.jpg',
-        'Niños grandes' => 'https://pics.filmaffinity.com/Nianos_grandes-306284183-large.jpg'
+        'American Pie' => 'https://m.media-amazon.com/images/I/712WOyd68vL._AC_UF894,1000_QL80_.jpg',
+        'Torrente: El brazo tonto de la ley' => 'https://m.media-amazon.com/images/I/71-NlxgRwJL._AC_UF350,350_QL50_.jpg',
+        'Garfield' => 'https://m.media-amazon.com/images/S/pv-target-images/edb2d4c89ce249d2ba68c7ecfcf482e1ae9bff689c9d4071e6cc8666b02b51de.jpg',
+        'Interestelar' => 'https://m.media-amazon.com/images/I/712I5GOGprL._AC_UF894,1000_QL80_.jpg',
+        'Frozen II' => 'https://m.media-amazon.com/images/I/81zhbnH3XSL._AC_UF894,1000_QL80_.jpg',
+        'Scary Movie' => 'https://m.media-amazon.com/images/I/514YxCy-U5L._AC_UF894,1000_QL80_.jpg',
+        'Regreso al futuro' => 'https://m.media-amazon.com/images/I/61ZEcXTypgS._AC_UF894,1000_QL80_.jpg',
+        'Niños grandes' => 'https://m.media-amazon.com/images/I/51nmZn97-+L.jpg'
     ];
-
     protected $sinopsisPeliculas = [
         'American Pie' => 'Un grupo de adolescentes hace un pacto para perder su virginidad antes de graduarse, enfrentándose a situaciones cómicas y complicadas en el proceso.',
         'Torrente: El brazo tonto de la ley' => 'Torrente, un excéntrico y torpe ex-policía, se ve envuelto en una serie de desventuras mientras intenta resolver un caso de corrupción.',
         'Garfield' => 'Garfield, un gato perezoso y glotón, debe lidiar con un nuevo perro en la casa, mientras busca maneras de seguir siendo el centro de atención.',
-        'Interstellar' => 'En un futuro cercano, un grupo de astronautas viaja a través de un agujero de gusano en busca de un nuevo hogar para la humanidad, enfrentándose a misterios del espacio y el tiempo.',
+        'Interestelar' => 'En un futuro cercano, un grupo de astronautas viaja a través de un agujero de gusano en busca de un nuevo hogar para la humanidad, enfrentándose a misterios del espacio y el tiempo.',
         'Frozen II' => 'Dos hermanas, Elsa y Anna, enfrentan los desafíos de una magia congelante que separa a Elsa de su familia, mientras luchan por salvar su reino de la eterna nieve.',
         'Scary Movie' => 'Una parodia de películas de terror, donde un grupo de adolescentes se ve atrapado en situaciones absurdas y cómicas, mientras intentan sobrevivir a una serie de eventos extraños.',
         'Regreso al futuro' => 'Marty McFly, un joven que viaja al pasado con la ayuda de un DeLorean convertido en máquina del tiempo, debe asegurarse de que sus padres se enamoren para evitar que desaparezca de la historia.',

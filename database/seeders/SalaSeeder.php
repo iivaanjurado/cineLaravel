@@ -8,9 +8,6 @@ use App\Models\Sala;
 
 class SalaSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run(): void
     {
         Sala::factory(count: 8)->create();

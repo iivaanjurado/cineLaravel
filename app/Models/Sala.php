@@ -10,7 +10,8 @@ class Sala extends Model
     use HasFactory;
     
     protected $primaryKey = 'id'; 
-    protected $fillable = ['pelicula'];
+    protected $fillable = ['pelicula','enlaceImg','sinopsis'];
+    protected $hidden = ['created_at', 'updated_at'];
 
     public function asientos(){
         return $this->hasMany(Asiento::class,'idSala');

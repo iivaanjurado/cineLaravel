@@ -13,6 +13,9 @@ Route::get('/cartelera', function () {
 Route::get('/insertar-sala', function () {
     return view('insertarSala');
 });
+Route::get('/modificar-sala', function () {
+    return view('modificarSala');
+});
 
 
 // -----------------------rutas api-controlador

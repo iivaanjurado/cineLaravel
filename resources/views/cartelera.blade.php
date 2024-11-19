@@ -7,7 +7,7 @@
     <title>Cine</title>
     @vite(['resources/css/app.css','resources/js/app.js'])
 </head>
-<body class="flex flex-col min-h-screen overflow-hidden">
+<body class="flex flex-col min-h-screen bg-gray-100">
 
     <div class="bg-gradient-to-l from-pink-400 to-blue-600 h-34 w-full flex items-center justify-between px-8">
         <div class="flex items-center">
@@ -22,9 +22,12 @@
     </div>
 
 
-    <div id="peliculas" class="w-full flex-grow">
+    <main class="flex-1 px-8 py-6">
 
-    </div>
+        <div id="peliculas" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 overflow-y-auto">
+
+        </div>
+    </main>
     <div id="contenido"></div>
 
 

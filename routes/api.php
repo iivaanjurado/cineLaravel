@@ -31,7 +31,7 @@ Route::get('/insert_sala_titulo/{titulo}',  [SalaController::class, 'insert_sala
 Route::get('/insert_sala',  [SalaController::class, 'insertar_sala'])->name('insertar_sala');
 
 //update sala por request
-Route::get('/update_sala',  [SalaController::class, 'update_sala'])->name('update_sala');
+Route::post('/update_sala',  [SalaController::class, 'update_sala'])->name('update_sala');
 
 //!colision /el_sala/{param}
 //eliminar sala por titulo
@@ -43,8 +43,8 @@ Route::get('/delete_sala_id/{id}',  [SalaController::class, 'delete_sala_id'])->
 //----------------------------------------asientos
 
 
-//update estado asiento por id (reservar) 
-Route::get('/reservar_asiento/{id}',  [AsientoController::class, 'update_reservar_asiento'])->name('reservar_asiento');  
+//update estado asiento por id (reservar)
+Route::get('/reservar_asiento/{id}',  [AsientoController::class, 'update_reservar_asiento'])->name('reservar_asiento');
 
-//update estado asiento por id (anular reserva) 
+//update estado asiento por id (anular reserva)
 Route::get('/anular_reserva_asiento/{id}',  [AsientoController::class, 'update_anular_reserva_asiento'])->name('anular_reserva_asiento');

@@ -3,7 +3,7 @@ const cartelera = document.querySelector('#peliculas');
 const contenido = document.querySelector('#contenido');
 
 // URL del endpoint para las películas
-const Api_select = 'http://127.0.0.1:8080/public/api/select_salas';
+const Api_select = '/api/select_salas';
 
 //cargar las peliculas al inicio
 fetch(Api_select)

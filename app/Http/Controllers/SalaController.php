@@ -278,14 +278,13 @@ class SalaController extends Controller
         $enlace = 'https://dubaitickets.tours/wp-content/uploads/2023/03/img-worlds-of-adventure-dubai-ticket-9.jpg'; */
 
 
-
         //valido la entrada
         // $validator = Validator::make($request->all())
-        $validator = Validator::make(['pelicula' => $titulo, 'sinopsis' => $sinopsis, 'enlaceImg' => $enlace], [
-            'pelicula' => 'required | string | max:255',
+        $validator = Validator::make($request->all(), [
+            'titulo' => 'required | string | max:255',
             'sinopsis' => 'required | string | max:255',
-            'enlaceImg' => 'required | url | string | max:255'
-        ], []);
+            'enlace' => 'required | string | max:255'
+        ]);
 
 
         if ($validator->fails()) {
@@ -309,7 +308,7 @@ class SalaController extends Controller
                     'message' => 'No se encontró ninguna sala',
                 ];
 
-                return response()->json($data, 400);
+                return response()->json($data, 200);
 
             } else {//si encuentra la sala
 
@@ -333,7 +332,7 @@ class SalaController extends Controller
                         'message' => 'Error en la consulta, sala no actualizada'
                     ];
 
-                    return response()->json($data, 400);
+                    return response()->json($data, 200);
 
                 }
             }

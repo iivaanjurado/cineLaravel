@@ -99,19 +99,20 @@ class SalaController extends Controller
     public function insertar_sala(Request $request)
     {
 
-        //get datos del request (valor atributo name en inputs front)
-        $titulo = $request->input('titulo');
-        $sinopsis = $request->input('sinopsis');
-        $enlace = $request->input('enlace');
+        ////get datos del request (valor atributo name en inputs front)
+        //get datos de request accediendo a piñon
+        $titulo = $request['titulo'];
+        $sinopsis = $request['sinopsis'];
+        $enlace = $request['enlace'];
 
-        /* $titulo = 'lapeliculanueva';
+        /*  $titulo = 'lapeliculanueva';
         $sinopsis = 'vetesaber';
-        $enlace = 'hhtp//;ss'; */
-
+        $enlace = 'hhtp//;ss';
+ */
         //valido la entrada
         // $validator = Validator::make($request->all())
-        $validator = Validator::make(['pelicula' => $titulo, 'sinopsis' => $sinopsis, 'enlaceImg' => $enlace], [
-            'pelicula' => 'required | string | max:255 | unique:salas,pelicula' ,
+        $validator = Validator::make($request->all(), [
+            'pelicula' => 'required | string | max:255 | unique:salas,pelicula',
             'sinopsis' => 'required | string | max:255',
             'enlaceImg' => 'required | url | string | max:255'
         ], []);
@@ -125,8 +126,7 @@ class SalaController extends Controller
 
             ];
 
-            return response()->json($data, 200);
-
+            return response()->json($data, 400);
         } else { //validacion correcta
 
             //insert registro sala y asientos
@@ -139,51 +139,52 @@ class SalaController extends Controller
             $sala->enlaceImg = $enlace;
 
             //lo guardo
-            $sala->save();
+            $b = $sala->save();
 
-            //con tabla sala creada, creo tabla asientos
+            if ($b) {
 
-            //necesito de un método en el controlador de asientos para generar los registros, instancio el controllador
-            $asientoController = new AsientoController();
+                //con tabla sala creada, creo tabla asientos
 
-            // genero los registros asientos, a partir de un metodo del controlador, usando el id de la sala generada para la fk idSala
-            $asientoController->insert_asientos($sala);
+                //necesito de un método en el controlador de asientos para generar los registros, instancio el controllador
+                $asientoController = new AsientoController();
+
+                // genero los registros asientos, a partir de un metodo del controlador, usando el id de la sala generada para la fk idSala
+                $asientoController->insert_asientos($sala);
 
 
-            //elaboro  respuesta json con la nueva sala creada y sus asientos
+                //elaboro  respuesta json con la nueva sala creada y sus asientos
 
-            //recupero la sala creada
-            $sala = Sala::where('pelicula', $titulo)->get();
-            $asientos = Asiento::where('idSala', $sala[0]->id)->get();
+                //recupero la sala creada
+                $sala = Sala::where('pelicula', $titulo)->get();
+                $asientos = Asiento::where('idSala', $sala[0]->id)->get();
 
-            //check consultas
-            if ($sala->isEmpty()) {
+                //check consultas
+                if ($sala->isEmpty()) {
 
-                //manipulo respuesta
-                $sala = [
-                    'message' => ' No se encontró ninguna sala con ese id',
-                    'status' => 200
-                ];
-            } elseif ($asientos->isEmpty()) {
-                $asientos = [
-                    'message' => ' No se encontraron asientos para esa sala',
-                    'status' => 200
-                ];
+                    //manipulo respuesta
+                    $sala = [
+                        'message' => ' No se encontró ninguna sala con ese id',
+                        'status' => 200
+                    ];
+                } elseif ($asientos->isEmpty()) {
+                    $asientos = [
+                        'message' => ' No se encontraron asientos para esa sala',
+                        'status' => 200
+                    ];
+                } else {
+                    //elaboro el array de respuesta
+                    $data = [
+                        'message' => 'Sala creada con éxito',
+                        'sala' => $sala,
+                        'asientos' => $asientos
+                    ];
+
+                    //retorno respuesta + codigo estado solicitud exitosa
+                    return response()->json($data, 200);
+                }
             }
-
-            //elaboro el array de respuesta
-            $data = [
-                'message' => 'Sala creada con éxito',
-                'sala' => $sala,
-                'asientos' => $asientos
-            ];
-
-            //retorno respuesta + codigo estado solicitud exitosa
-            return response()->json($data, 200);
         }
     }
-
-    //todo modificar y eliminar
 
     //insert sala y sus asientos por titulo
     public function insert_sala_titulo($titulo)
@@ -193,6 +194,7 @@ class SalaController extends Controller
         $validator = Validator::make(['titulo' => $titulo], [
 
             'titulo' => 'string | max:255 |unique:salas,titulo'
+
         ]);
 
         //check validación
@@ -206,7 +208,6 @@ class SalaController extends Controller
 
             //retorno respuesta json + codigo error en la solicitud
             return response()->json($data, 400);
-            
         } else { //si validación correcta
 
             //insert registro sala y registros asientos
@@ -232,21 +233,20 @@ class SalaController extends Controller
 
             //retorno respuesta json con la nueva sala creada y sus asientos
             //recupero la sala creada
-            $sala = Sala::where('pelicula', $titulo)->get();
-            $asientos = Asiento::where('idSala', $sala[0]->id)->get();
+            $sala = Sala::where('pelicula', $titulo)->first();
+            $asientos = Asiento::where('idSala', $sala->id)->get();
 
             //check consultas
             if ($sala->isEmpty()) {
 
                 //manipulo respuesta
                 $sala = [
-                    'message' => ' No se encontró ninguna sala con ese id',
+                    'errors' => ' No se encontró ninguna sala con ese id',
                     'status' => 200
                 ];
-
             } elseif ($asientos->isEmpty()) {
                 $asientos = [
-                    'message' => ' No se encontraron asientos para esa sala',
+                    'errors' => ' No se encontraron asientos para esa sala',
                     'status' => 200
                 ];
             }
@@ -264,9 +264,11 @@ class SalaController extends Controller
     }
 
     //update campos de sala por request
-    public function update_sala(Request $request){
+    public function update_sala(Request $request)
+    {
 
-        //get datos del request (valor atributo name en inputs front)
+        ////get datos del request (valor atributo name en inputs front)
+        //get datos de request accediendo a piñon
         $id = $request['id'];
         $titulo = $request['titulo'];
         $sinopsis = $request['sinopsis'];
@@ -276,12 +278,12 @@ class SalaController extends Controller
         $titulo = 'Interstellar 2';
         $sinopsis = 'Vuelve intelesstelar';
         $enlace = 'https://dubaitickets.tours/wp-content/uploads/2023/03/img-worlds-of-adventure-dubai-ticket-9.jpg'; */
-       
+
 
 
         //valido la entrada
         // $validator = Validator::make($request->all())
-        $validator = Validator::make(['pelicula' => $titulo, 'sinopsis' => $sinopsis, 'enlaceImg' => $enlace], [
+        $validator = Validator::make($request->all(), [
             'pelicula' => 'required | string | max:255',
             'sinopsis' => 'required | string | max:255',
             'enlaceImg' => 'required | url | string | max:255'
@@ -296,29 +298,31 @@ class SalaController extends Controller
 
             ];
 
-            return response()->json($data, 200);
-
-        }else{//validacion correcta
+            return response()->json($data, 400);
+        } else { //validacion correcta
 
             //recupero el registro
             $sala = Sala::where('id', $id)->first();
 
+            //check consulta
             if (is_null($sala)) {
 
                 $data = [
-                    'message' => 'No se encontró ninguna sala',
+                    'errors' => 'No se encontró ninguna sala',
                 ];
 
-                return response()->json($data, 400);
+                return response()->json($data, 200);
+            } else { //si encuentra la sala
 
-            } else {//si encuentra la sala
-
+                //modifico atributos-campos
                 $sala->pelicula = $titulo;
                 $sala->sinopsis = $sinopsis;
                 $sala->enlaceImg = $enlace;
 
+                //almaceno
                 $b = $sala->save();
 
+                //que se almacena correctamente
                 if ($b) {
 
                     $data = [
@@ -326,15 +330,13 @@ class SalaController extends Controller
                     ];
 
                     return response()->json($data, 200);
-
-                } else {
+                } else { //que no
 
                     $data = [
-                        'message' => 'Error en la consulta, sala no actualizada'
+                        'errors' => 'Error en la consulta, sala no actualizada'
                     ];
 
                     return response()->json($data, 400);
-
                 }
             }
         }
@@ -369,13 +371,24 @@ class SalaController extends Controller
 
             //elimino la tabla que corresponda al id, asientos se eliminan por cascade
             $sala = Sala::where('pelicula', $titulo)->first();
-            $sala->delete();
 
-            $data = [
-                'message' => 'Sala eliminada con éxito',
-            ];
+            $b = $sala->delete();
 
-            return response()->json($data, 200);
+            if ($b) {
+
+                $data = [
+                    'message' => 'Sala eliminada con éxito',
+                ];
+
+                return response()->json($data, 200);
+            } else {
+
+                $data = [
+                    'errors' => 'Error en la consulta, sala no eliminada'
+                ];
+
+                return response()->json($data, 200);
+            }
         }
     }
 
@@ -397,7 +410,6 @@ class SalaController extends Controller
 
             //retorno respuesta json + codigo error en la solicitud
             return response()->json($data, 400);
-
         } else { //si validación correcta
 
             //elimino la tabla que corresponda al id, asientos se eliminan por cascade
@@ -418,24 +430,24 @@ class SalaController extends Controller
             } else {
 
                 //la elimino, delete no funciona con el conjunto d datos, necesita el registro
-                $sala->delete();
+                $b = $sala->delete();
 
-                //elaboro el array de respuesta
-                $data = [
-                    'message' => 'Sala eliminada con éxito',
-                ];
+                if ($b) {
 
-                //retorno respuesta json + codigo estado solicitud exitosa
-                return response()->json($data, 200);
+                    $data = [
+                        'message' => 'Sala eliminada con éxito',
+                    ];
+
+                    return response()->json($data, 200);
+                } else {
+
+                    $data = [
+                        'errors' => 'Error en la consulta, sala no eliminada'
+                    ];
+
+                    return response()->json($data, 200);
+                }
             }
         }
     }
-
-
-
-
-
-
-
-
 }

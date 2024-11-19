@@ -21,29 +21,39 @@ fetch(Api_select)
     console.error('Error al obtener las películas:', error);
   });
 
-// Función para renderizar las películas
-function renderizarPeliculas(peliculas) {
-  cartelera.innerHTML = '';
+  function renderizarPeliculas(peliculas) {
+    cartelera.innerHTML = '';
 
-  peliculas.forEach((sala) => {
-    const peliculaItem = document.createElement('button');
-    peliculaItem.textContent = sala.pelicula;
-    peliculaItem.dataset.id = sala.id;
+    peliculas.forEach((sala) => {
+      const peliculaItem = document.createElement('button');
+      peliculaItem.textContent = sala.pelicula;
+      peliculaItem.dataset.id = sala.id;
 
-    peliculaItem.innerHTML = `<img src="${sala.enlaceImg}" alt="${sala.pelicula}" class="rounded-md object-cover w-full h-48" crossorigin="anonymous">`;
+      // Añadimos el HTML con la imagen y el texto "Entradas" que aparece en el hover
+      peliculaItem.innerHTML = `
+        <div class="relative group">
+          <img src="${sala.enlaceImg}" alt="${sala.pelicula}" class="rounded-md object-cover w-full h-auto transition duration-300 transform group-hover:grayscale group-hover:opacity-80" crossorigin="anonymous">
 
-    peliculaItem.addEventListener('click', () => {
-      mostrarAsientos(sala.id);
+          <div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <span class="text-white text-lg font-bold p-4 bg-gray-800 rounded-md">Entradas</span>
+          </div>
+        </div>
+      `;
+
+      // Event listener para el click en el botón
+      peliculaItem.addEventListener('click', () => {
+        mostrarAsientos(sala.id);
+      });
+
+      // Añadimos el botón a la cartelera
+      cartelera.appendChild(peliculaItem);
     });
-
-    cartelera.appendChild(peliculaItem);
-  });
-}
+  }
 
 // Función para mostrar los asientos
 function mostrarAsientos(idSala) {
   // Ocultar la cartelera de películas
-  cartelera.style.display = '';
+  cartelera.style.display = 'none';
 
   // Mostrar el contenido de los asientos
   contenido.innerHTML = `<div class="flex justify-between items-center mb-4"><button id="atras" class="px-4 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600">Atrás</button><h2 class="text-xl font-semibold">Asientos Disponibles en la sala ${idSala}</h2> </div>`;

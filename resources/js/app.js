@@ -76,7 +76,7 @@ function mostrarAsientos(idSala) {
     });
 
     //realizar la llamada a la API
-    fetch(`${apiSelectSala}/${idSala}`)
+    fetch(`${apiSelectSala}${idSala}`)
         .then((response) => {
             if (!response.ok) {
                 throw new Error(
@@ -207,7 +207,7 @@ function reservarAsientos(asientosSeleccionados) {
     //recorrer los asientos seleccionados
     asientosSeleccionados.forEach((idAsiento) => {
         // Hacemos la solicitud GET sin headers, body ni método adicional
-        fetch(`${reservarAsientos}${idAsiento}`)
+        fetch(`${apiReservarAsiento}${idAsiento}`)
             .then((response) => {
                 if (!response.ok) {
                     throw new Error("No se pudo reservar el asiento.");

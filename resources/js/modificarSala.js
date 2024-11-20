@@ -2,8 +2,8 @@
 document.addEventListener('DOMContentLoaded',()=>{
 
 
-const apiSelectSalas = 'http://127.0.0.1:8080/public/api/select_salas';
-const apiUpdateSala = 'http://127.0.0.1:8080/public/api/update_sala'; // URL para actualizar sala
+const apiSelectSalas = '/api/select_salas';
+const apiUpdateSala = '/api/update_sala';
 
 
 //variable donde se almacenará el id de la pelicula

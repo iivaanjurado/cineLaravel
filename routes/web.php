@@ -16,6 +16,9 @@ Route::get('/insertar-sala', function () {
 Route::get('/modificar-sala', function () {
     return view('modificarSala');
 });
+Route::get('/eliminar-sala', function () {
+    return view('eliminarSala');
+});
 
 
 // -----------------------rutas api-controlador

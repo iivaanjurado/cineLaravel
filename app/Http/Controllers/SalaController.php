@@ -409,14 +409,15 @@ class SalaController extends Controller
 
                 //manipulo respuesta
                 $data = [
-                    'message' => ' No se encontró ninguna sala con ese id',
+                    'errors' => ' No se encontró ninguna sala con ese id',
                 ];
 
                 //retorno respuesta json + codigo estado solicitud exitosa
                 return response()->json($data, 200);
+
             } else {
 
-                //la elimino, delete no funciona con el conjunto d datos, necesita el registro
+                //la elimino, delete no funciona con el conjunto d datos, necesita el registro (frist())
                 $sala->delete();
 
                 //elaboro el array de respuesta

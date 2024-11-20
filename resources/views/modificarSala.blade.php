@@ -38,7 +38,7 @@
             <label for="enlace" class="block mb-2 text-sm font-medium text-gray-700">Url:</label>
             <input class="w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none focus:border-blue-500" type="text" name="enlace" id="enlace" required>
             <label for="sinopsis" class="block mb-2 text-sm font-medium text-gray-700">Sinopsis:</label>
-            <textarea class="w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none focus:border-blue-500" name="sinopsis" id="sinopsis" rows="4" required></textarea>
+            <textarea class="w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none focus:border-blue-500" name="sinopsis" id="sinopsis" rows="6" required></textarea>
             <button type="submit" class="w-full bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">
                 Modificar sala
             </button>

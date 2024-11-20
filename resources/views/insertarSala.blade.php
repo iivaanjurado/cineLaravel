@@ -29,14 +29,14 @@
 
     <main class="flex-grow flex items-center justify-center bg-gray-100 px-4 py-6">
         <form id="formulario" class="bg-white shadow-md rounded-lg p-6 sm:p-8 max-w-md w-full m-4 sm:m-6 space-y-4">
-            <h2 class="text-xl sm:text-2xl font-bold mb-6 text-center text-gray-800">Agregar Sala</h2>
+            <h2 class="text-xl sm:text-2xl font-bold mb-6 text-center text-gray-800">Insertar Sala</h2>
             <label for="titulo" class="block mb-2 text-sm font-medium text-gray-700">Título</label>
-            <input type="text" id="titulo" class="w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none focus:border-blue-500" placeholder="Título de la película">
+            <input type="text" id="titulo" class="w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none focus:border-blue-500" >
             <label for="enlace" class="block mb-2 text-sm font-medium text-gray-700">Enlace de la imagen</label>
-            <input type="url" id="enlace" class="w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none focus:border-blue-500" placeholder="URL de la imagen">
+            <input type="url" id="enlace" class="w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none focus:border-blue-500">
             <label for="sinopsis" class="block mb-2 text-sm font-medium text-gray-700">Sinopsis</label>
-            <textarea id="sinopsis" class="w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none focus:border-blue-500" rows="6" placeholder="Descripción de la película"></textarea>
-            <button type="submit" class="w-full bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">Agregar Sala</button>
+            <textarea id="sinopsis" class="w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none focus:border-blue-500" rows="6"></textarea>
+            <button type="submit" class="w-full bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">Insertar Sala</button>
         </form>
     </main>
 

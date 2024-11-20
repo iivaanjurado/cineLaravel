@@ -12,7 +12,7 @@
     <header class="bg-gradient-to-l from-pink-400 to-blue-600 py-4 w-full px-4 sm:px-8 mb-6">
         <div class="flex flex-wrap items-center justify-between">
             <div class="w-full sm:w-auto mb-4 sm:mb-0 flex justify-center sm:justify-start">
-                <a href="/cartelera"><img src={{ asset('logo.png') }} class="h-24 sm:h-32" alt="FilmBox Logo"></a>
+                <a href="/cartelera"><img src='./logo.png' class="h-24 sm:h-32" alt="FilmBox Logo"></a>
             </div>
             <div class="w-full sm:w-auto mb-4 sm:mb-0 text-center">
                 <a href="/cartelera">

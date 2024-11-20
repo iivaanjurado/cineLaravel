@@ -87,62 +87,63 @@ function mostrarAsientos(idSala) {
 // Variable para almacenar los asientos seleccionados
 let asientosSeleccionados = [];
 
-// Función para pintar los asientos
 function renderizarAsientosGrid(asientos) {
-  const contenedorAsientos = document.createElement('div');
-  contenedorAsientos.classList.add('grid', 'grid-cols-10', 'gap-2', 'w-full', 'max-w-xl', 'mx-auto', 'mb-6');
+    const contenedorAsientos = document.createElement('div');
+    contenedorAsientos.classList.add('grid', 'grid-cols-10', 'gap-2', 'w-full', 'max-w-xl', 'mx-auto', 'mb-6');
 
-  asientos.forEach((asiento) => {
-    const asientoDiv = document.createElement('div');
-    asientoDiv.classList.add('flex', 'items-center', 'justify-center', 'h-12', 'w-12', 'cursor-pointer');
+    asientos.forEach((asiento) => {
+      const asientoDiv = document.createElement('div');
+      asientoDiv.classList.add('flex', 'items-center', 'justify-center', 'h-12', 'w-12', 'cursor-pointer');
 
-    if (asiento.reservado === 0) {
-      asientoDiv.classList.add('bg-green-500', 'hover:bg-green-600');
-      const img = document.createElement('img');
-      img.src = 'asiento-libre.png';
-      img.alt = 'Asiento libre';
-      img.classList.add('h-full', 'w-full', 'object-contain');
-      asientoDiv.appendChild(img);
+      if (asiento.reservado === 0) {
+        asientoDiv.classList.add('bg-green-500', 'hover:bg-green-600');
+        const img = document.createElement('img');
+        img.src = 'asiento-libre.png';
+        img.alt = 'Asiento libre';
+        img.classList.add('h-full', 'w-full', 'object-contain');
+        asientoDiv.appendChild(img);
 
-      asientoDiv.addEventListener('click', () => {
-        if (!asientosSeleccionados.includes(asiento.id)) {
-          asientoDiv.classList.add('bg-orange-500');
-          asientosSeleccionados.push(asiento.id);
-        } else {
-          asientoDiv.classList.remove('bg-orange-500');
-          asientosSeleccionados = asientosSeleccionados.filter((id) => id !== asiento.id);
-        }
-      });
+        asientoDiv.addEventListener('click', () => {
+          if (!asientosSeleccionados.includes(asiento.id)) {
+            asientoDiv.classList.add('bg-orange-500');
+            asientosSeleccionados.push(asiento.id);
+          } else {
+            asientoDiv.classList.remove('bg-orange-500');
+            asientosSeleccionados = asientosSeleccionados.filter((id) => id !== asiento.id);
+          }
+        });
 
-    } else {
-      asientoDiv.classList.add('bg-gray-500', 'cursor-not-allowed');
-      const img = document.createElement('img');
-      img.src = 'asiento-ocupado.png';
-      img.alt = 'Asiento ocupado';
-      img.classList.add('h-full', 'w-full', 'object-contain');
-      asientoDiv.appendChild(img);
-    }
+      } else {
+        asientoDiv.classList.add('bg-gray-500', 'cursor-not-allowed');
+        const img = document.createElement('img');
+        img.src = 'asiento-ocupado.png';
+        img.alt = 'Asiento ocupado';
+        img.classList.add('h-full', 'w-full', 'object-contain');
+        asientoDiv.appendChild(img);
+      }
 
-    contenedorAsientos.appendChild(asientoDiv);
-  });
+      contenedorAsientos.appendChild(asientoDiv);
+    });
 
-  contenido.appendChild(contenedorAsientos);
+    contenido.appendChild(contenedorAsientos);
 
-  // Crear y agregar el botón de "Reservar"
-  const botonReservar = document.createElement('button');
-  botonReservar.textContent = 'Reservar';
-  botonReservar.classList.add('mt-6', 'px-4', 'py-2', 'bg-blue-500', 'text-white', 'rounded-md', 'hover:bg-blue-600');
-  contenido.appendChild(botonReservar);
+    // Crear y agregar el botón de "Reservar"
+    const botonReservar = document.createElement('button');
+    botonReservar.textContent = 'Reservar';
+    botonReservar.classList.add('mt-6', 'px-4', 'py-2', 'bg-blue-500', 'text-white', 'rounded-md', 'hover:bg-blue-600');
+    contenido.appendChild(botonReservar);
 
-  // Evento para reservar los asientos seleccionados
-  botonReservar.addEventListener('click', () => {
-    if (asientosSeleccionados.length > 0) {
-      reservarAsientos(asientosSeleccionados);
-    } else {
-      mostrarToast("Por favor, seleccione al menos un asiento.", 'error');
-    }
-  });
-}
+    // Evento para reservar los asientos seleccionados
+    botonReservar.addEventListener('click', () => {
+      if (asientosSeleccionados.length > 0) {
+        reservarAsientos(asientosSeleccionados);
+      } else {
+        mostrarToast("Por favor, seleccione al menos un asiento.", 'error');
+      }
+    });
+  }
+
+
 // Función para reservar los asientos
 function reservarAsientos(asientosSeleccionados) {
     if (asientosSeleccionados.length === 0) {

@@ -22,22 +22,31 @@
     </div>
 
     <div class="flex-grow flex items-center justify-center bg-gray-100">
-        <form action="" id="insertSalaForm" class="bg-white shadow-md rounded-lg p-8 max-w-md w-full">
-            <h2 class="text-2xl font-bold mb-6 text-center text-gray-800">Insertar Sala</h2>
-            <div class="mb-6">
-                <label for="titulo">Titulo de la Película:</label>
-                <input type="text" name="titulo" id="titulo">
-                <label for="">Enlace del cartel</label>
-                <input type="text" name="enlace" id="enlace">
-                <label for="sinopsis">Sinopsis</label>
-                <textarea name="sinopsis" id="sinopsis" cols="30" rows="10">
+        <form id="formulario" class="max-w-4xl mx-auto p-8 bg-white rounded-lg shadow-lg mt-10">
+            <h2 class="text-3xl font-semibold text-center mb-8">Agregar Sala</h2>
 
-                </textarea>
+            <div class="mb-6">
+                <label for="titulo" class="block text-lg font-medium text-gray-700">Título</label>
+                <input type="text" id="titulo" class="mt-1 p-3 w-full border border-gray-300 rounded-md text-lg" placeholder="Título de la película">
             </div>
-            <button type="submit" class="w-full bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
-                Insertar sala
-            </button>
+
+            <div class="mb-6">
+                <label for="enlace" class="block text-lg font-medium text-gray-700">Enlace de la imagen</label>
+                <input type="url" id="enlace" class="mt-1 p-3 w-full border border-gray-300 rounded-md text-lg" placeholder="URL de la imagen">
+            </div>
+
+            <div class="mb-6">
+                <label for="sinopsis" class="block text-lg font-medium text-gray-700">Sinopsis</label>
+                <textarea id="sinopsis" class="mt-1 p-3 w-full border border-gray-300 rounded-md text-lg" rows="6" placeholder="Descripción de la película"></textarea>
+            </div>
+
+            <div class="flex justify-center mt-8">
+                <button type="submit" class="px-8 py-4 bg-blue-500 text-white rounded-md hover:bg-blue-600 text-xl">Agregar Sala</button>
+            </div>
         </form>
+
+
+
     </div>
 
     <footer class="bg-gray-300 flex flex-col items-center justify-center text-center py-2 space-y-4">

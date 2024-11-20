@@ -1,8 +1,8 @@
 //endPoints de la API
 const apiSelectSalas = '/api/select_salas';
 const apiInsertSala = '/api/insert_sala';
-// Asegúrate de que el DOM esté completamente cargado
 
+// Asegúrate de que el DOM esté completamente cargado
 document.addEventListener('DOMContentLoaded', function () {
     const form = document.querySelector('form');
 
@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Validar que los campos no estén vacíos
         if (!titulo || !enlace || !sinopsis) {
-            alert("Por favor, complete todos los campos.");
+            mostrarToast("Por favor, complete todos los campos.", 'error');
             return; // Detener la ejecución si falta algún campo
         }
 
@@ -34,17 +34,44 @@ document.addEventListener('DOMContentLoaded', function () {
             // Comprobar si la respuesta de la API es exitosa
             if (data.success) {
                 // Si la inserción fue exitosa, mostrar un mensaje y redirigir
-                alert("Sala insertada exitosamente.");
+                mostrarToast("Sala insertada exitosamente.", 'success');
+                
                 window.location.href = "/cartelera"; // Redirigir a la cartelera después de la inserción
             } else {
                 // Si hay algún error, mostrar un mensaje
-                alert("Error al insertar la sala: " + (data.message || "Inténtelo de nuevo más tarde"));
+                mostrarToast("Error al insertar la sala: " + (data.message || "Inténtelo de nuevo más tarde"), 'error');
             }
         })
         .catch(error => {
             // En caso de un error en la solicitud, mostrar un mensaje
             console.error("Error en la solicitud:", error);
-            alert("Hubo un problema al intentar insertar la sala.");
+            mostrarToast("Hubo un problema al intentar insertar la sala.", 'error');
         });
     });
 });
+function mostrarToast(message, type) {
+    // Crear el contenedor del toast
+    const toast = document.createElement('div');
+    toast.classList.add('fixed', 'bottom-5', 'left-1/2', 'transform', '-translate-x-1/2', 'px-6', 'py-3', 'rounded-lg', 'text-white', 'shadow-lg', 'w-72', 'text-center');
+
+    // Definir los colores de fondo según el tipo
+    if (type === 'success') {
+        toast.classList.add('bg-green-500');
+    } else if (type === 'error') {
+        toast.classList.add('bg-red-500');
+    } else {
+        toast.classList.add('bg-gray-500');
+    }
+
+    // Añadir el mensaje al toast
+    toast.textContent = message;
+
+    // Añadir el toast al cuerpo del documento
+    document.body.appendChild(toast);
+
+    // Eliminar el toast después de 3 segundos
+    setTimeout(() => {
+        toast.remove();
+    }, 3000);
+}
+

@@ -272,7 +272,7 @@ function volverAPeliculas() {
     //ocultar los detalles de la pelicula
     const infoPeliculaDiv = document.getElementById("info-pelicula");
     infoPeliculaDiv.classList.add("hidden");
-    
+
     //limpiar los asientos
     contenido.innerHTML = "";
 

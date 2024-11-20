@@ -20,7 +20,12 @@
         {
             "src": "/(.*)",
             "dest": "/api/index.php"
+        },
+        {
+            "src": "/js/(.*)",
+            "dest": "/insertarSala.js"
         }
+
     ],
     "env": {
         "APP_ENV": "production",

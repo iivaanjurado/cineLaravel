@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Definir la URL de la API
     const apiSelectSalas = '/api/select_salas';    // Endpoint para obtener las salas
-    const apiDeleteSala = '/api/delete_sala_id';   // Endpoint para eliminar una sala
+    const apiDeleteSala = '/api/delete_sala_id';   // Endpoint para eliminar una sala por ID
 
     let movieId = null;  // Variable para almacenar el ID de la película seleccionada
 
@@ -43,15 +43,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const confirmacion = confirm(`¿Estás seguro de que deseas eliminar la película con ID: ${movieId}?`);
 
         if (confirmacion) {
-
-
-            // Realizar la solicitud GET para eliminar la película
-            fetch('/api/delete_sala_id/' + movieId, {
-                method: 'GET'
-            })
+            // Realizar la solicitud GET para eliminar la película por ID
+            fetch(apiDeleteSala + '/' + movieId)
                 .then(response => response.json())
                 .then(data => {
-                    if (data.success) {
+                    if (data.message) {
                         alert('Película eliminada correctamente.');
                         cargarPeliculas();  // Recargar las películas después de la eliminación
                     } else {
@@ -75,7 +71,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Agregar el evento de submit al formulario para eliminar la película seleccionada
     const form = document.getElementById('formulario-eliminar');
     form.addEventListener('submit', (event) => {
-
         event.preventDefault();  // Prevenir el comportamiento predeterminado del formulario
         eliminarSala();  // Llamar a la función para eliminar la película
     });

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Insertar Sala</title>
-    @vite(['resources/css/app.css','resources/js/app.js'])
+    @vite(['resources/css/app.css','resources/js/insertarSala.js'])
 </head>
 <body class="flex flex-col min-h-screen overflow-hidden">
 
@@ -22,7 +22,7 @@
     </div>
 
     <div class="flex-grow flex items-center justify-center bg-gray-100">
-        <form action="/api/insert_sala" class="bg-white shadow-md rounded-lg p-8 max-w-md w-full">
+        <form action="" id="insertSalaForm" class="bg-white shadow-md rounded-lg p-8 max-w-md w-full">
             <h2 class="text-2xl font-bold mb-6 text-center text-gray-800">Insertar Sala</h2>
             <div class="mb-6">
                 <label for="titulo">Titulo de la Película:</label>

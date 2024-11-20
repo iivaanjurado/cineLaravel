@@ -20,7 +20,17 @@ Route::get('/eliminar-sala', function () {
     return view('eliminarSala');
 });
 
+Route::get('/eliminar-sala', function () {
+    return view('eliminarSala');
+});
 
+Route::get('/modificar-sala', function () {
+    return view('modificarSala');
+});
+
+Route::get('/asientos', function () {
+    return view('asientos');
+});
 // -----------------------rutas api-controlador
 
 Route::get('/demo_select', [SalaController::class, 'select']);

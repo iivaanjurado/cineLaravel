@@ -1,56 +1,63 @@
-//endPoints de la API
+//EndPoints de la API
 const apiSelectSalas = '/api/select_salas';
 const apiInsertSala = '/api/insert_sala';
 
-// Asegúrate de que el DOM esté completamente cargado
+//evento para asegurar que han cargado los elementos del DOM
 document.addEventListener('DOMContentLoaded', function () {
     const form = document.querySelector('form');
 
-    // Manejar el evento de envío del formulario
+    //evento para controlar cuando se pulsa el boton del formulario
     form.addEventListener('submit', function (event) {
-        event.preventDefault(); // Prevenir el comportamiento predeterminado de recargar la página
 
-        // Obtener los valores de los campos del formulario
+        //prevenir que recargue la pagina
+        event.preventDefault();
+
+        //obtener los valores del formulario que se van a actualizar
         const titulo = document.getElementById('titulo').value;
         const enlace = document.getElementById('enlace').value;
         const sinopsis = document.getElementById('sinopsis').value;
 
-        // Validar que los campos no estén vacíos
+        //comprobar que los campos no estan vacios
         if (!titulo || !enlace || !sinopsis) {
+
             mostrarToast("Por favor, complete todos los campos.", 'error');
-            return; // Detener la ejecución si falta algún campo
+
+            return;
         }
 
-        // Crear la URL con los parámetros de consulta (query parameters)
-        const apiInsertSala = '/api/insert_sala';
+        //realizar el enlace para enviar los datos mediante GET
         const url = `${apiInsertSala}?titulo=${encodeURIComponent(titulo)}&enlace=${encodeURIComponent(enlace)}&sinopsis=${encodeURIComponent(sinopsis)}`;
 
-        // Realizar la solicitud GET usando fetch
+        //llamada a la API mediante GET
         fetch(url, {
-            method: 'GET',  // Usamos GET para enviar los datos como parámetros
+            method: 'GET',
         })
-        .then(response => response.json())  // Convertir la respuesta a JSON
+        .then(response => response.json())
+
         .then(data => {
-            // Comprobar si la respuesta de la API es exitosa
+
+            //si se ha realizado correctamente, mostrar un mensaje
             if (data.success) {
-                // Si la inserción fue exitosa, mostrar un mensaje y redirigir
+
                 mostrarToast("Sala insertada exitosamente.", 'success');
-                
-                window.location.href = "/cartelera"; // Redirigir a la cartelera después de la inserción
+
             } else {
-                // Si hay algún error, mostrar un mensaje
+
                 mostrarToast("Error al insertar la sala: " + (data.message || "Inténtelo de nuevo más tarde"), 'error');
             }
         })
         .catch(error => {
-            // En caso de un error en la solicitud, mostrar un mensaje
+
             console.error("Error en la solicitud:", error);
             mostrarToast("Hubo un problema al intentar insertar la sala.", 'error');
         });
     });
 });
+
+/*---------------------------FUNCION PARA MOSTRAR LOS MENSAJES TOAST---------------------- */
 function mostrarToast(message, type) {
-    // Crear el contenedor del toast
+
+    //crear el cuerpo del mensaje Toast
     const toast = document.createElement('div');
     toast.classList.add('fixed', 'bottom-5', 'left-1/2', 'transform', '-translate-x-1/2', 'px-6', 'py-3', 'rounded-lg', 'text-white', 'shadow-lg', 'w-72', 'text-center');
 
@@ -63,13 +70,13 @@ function mostrarToast(message, type) {
         toast.classList.add('bg-gray-500');
     }
 
-    // Añadir el mensaje al toast
+    //añadir el texto al contenido del mensaje
     toast.textContent = message;
 
-    // Añadir el toast al cuerpo del documento
+    //añadir el toast
     document.body.appendChild(toast);
 
-    // Eliminar el toast después de 3 segundos
+    //eliminar el toast a los 3 segundos
     setTimeout(() => {
         toast.remove();
     }, 3000);

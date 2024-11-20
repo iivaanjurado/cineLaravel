@@ -1,78 +1,110 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
 
-    // Definir la URL de la API
-    const apiSelectSalas = '/api/select_salas';    // Endpoint para obtener las salas
-    const apiDeleteSala = '/api/delete_sala_id';   // Endpoint para eliminar una sala por ID
+    //EndPoints de la API
+    const apiSelectSalas = "/api/select_salas";
+    const apiDeleteSala = "/api/delete_sala_id";
 
-    let movieId = null;  // Variable para almacenar el ID de la película seleccionada
+    //almacenar el id de la pelicula seleccionada
+    let movieId = null;
 
-    // Función para cargar las películas en el select
+/*-----------------------------FUNCION PARA CARGAR LAS PELICULAS EN EL SELECT------------------- */
     function cargarPeliculas() {
-        fetch(apiSelectSalas)
-            .then(response => response.json())
-            .then(data => {
-                let selectPeliculas = document.querySelector('#movie');
-                selectPeliculas.innerHTML = '<option value="" disabled selected>Elige una película</option>';  // Limpiar select
 
-                // Agregar las opciones al select
-                data.salas.forEach(sala => {
-                    const option = document.createElement('option');
-                    option.value = sala.id;  // Usar el ID de la sala
-                    option.textContent = sala.pelicula;  // Nombre de la película
+        //realizar la llamada a la API
+        fetch(apiSelectSalas)
+        ç
+            .then((response) => response.json())
+
+            .then((data) => {
+
+                //obtener el select del DOM
+                let selectPeliculas = document.querySelector("#movie");
+
+                //limpiar el Select
+                selectPeliculas.innerHTML =
+                    '<option value="" disabled selected>Elige una película</option>';
+
+                //agregar las peliculas que se obtienen mediante la llamada a la API como opcion al select
+                data.salas.forEach((sala) => {
+                    const option = document.createElement("option");
+
+                    //valor será el id de la pelicula
+                    option.value = sala.id;
+
+                    //el contenido será el titulo de la pelicula
+                    option.textContent = sala.pelicula;
                     selectPeliculas.appendChild(option);
                 });
             })
-            .catch(error => {
-                console.error('Error al cargar las películas:', error);
+            .catch((error) => {
+                console.error("Error al cargar las películas:", error);
             });
     }
 
-    // Función para manejar la selección de una película en el select
+/*-------------------FUNCION PARA MANEJAR CUANDO SE SELECCIONA UNA PELICULA------------- */
     function seleccionarPelicula(event) {
-        movieId = event.target.value;  // Obtener el ID de la película seleccionada
+
+        //obtener el id de la pelicula seleccionada
+        movieId = event.target.value;
     }
 
-    // Función para eliminar la sala seleccionada
+/*-----------------------FUNCION PARA ELIMINAR UNA SALA--------------- */
     function eliminarSala() {
+
+        //si no se ha elegido ninguna pelicula mostrar un mensaje de error
         if (!movieId) {
-            alert('Por favor, selecciona una película para eliminar.');
+            alert("Por favor, selecciona una película para eliminar.");
             return;
         }
 
-        // Confirmar la eliminación
-        const confirmacion = confirm(`¿Estás seguro de que deseas eliminar la película con ID: ${movieId}?`);
+        //mensaje para confirmar la pelicula que se va a borrar
+        const confirmacion = confirm(
+            `¿Estás seguro de que deseas eliminar la película con ID: ${movieId}?`
+        );
 
+        //si la confirmacion es true eliminar la pelicula
         if (confirmacion) {
-            // Realizar la solicitud GET para eliminar la película por ID
-            fetch(apiDeleteSala + '/' + movieId)
-                .then(response => response.json())
-                .then(data => {
+
+            //llamada a la API
+            fetch(apiDeleteSala + "/" + movieId)
+
+                .then((response) => response.json())
+                .then((data) => {
+
                     if (data.message) {
-                        alert('Película eliminada correctamente.');
-                        cargarPeliculas();  // Recargar las películas después de la eliminación
-                    } else {
-                        alert('Hubo un error al eliminar la película.');
+
+                        //mensaje para mostrar que se ha eliminado la pelicula
+                        alert("Película eliminada correctamente.");
+
+                        //recargar la lista de peliculas
+                        cargarPeliculas();
+                    }
+                    else {
+                        alert("Hubo un error al eliminar la película.");
                     }
                 })
-                .catch(error => {
-                    console.error('Error al eliminar la película:', error);
-                    alert('Hubo un problema al intentar eliminar la película.');
+                .catch((error) => {
+                    console.error("Error al eliminar la película:", error);
+                    alert("Hubo un problema al intentar eliminar la película.");
                 });
         }
     }
 
-    // Llamar a la función para cargar las películas cuando se carga la página
+    //cuando se carga la pagina llamar al metodo para cargar las peliculas
     cargarPeliculas();
 
-    // Agregar el evento de cambio al select para manejar la selección de película
-    const selectPeliculas = document.getElementById('movie');
-    selectPeliculas.addEventListener('change', seleccionarPelicula);
+    //evento para manejar cuando se selecciona una pelicula
+    const selectPeliculas = document.getElementById("movie");
+    selectPeliculas.addEventListener("change", seleccionarPelicula);
 
-    // Agregar el evento de submit al formulario para eliminar la película seleccionada
-    const form = document.getElementById('formulario-eliminar');
-    form.addEventListener('submit', (event) => {
-        event.preventDefault();  // Prevenir el comportamiento predeterminado del formulario
-        eliminarSala();  // Llamar a la función para eliminar la película
+    //agregar el evento para cuando se pulsa el boton del formulario
+    const form = document.getElementById("formulario-eliminar");
+    form.addEventListener("submit", (event) => {
+
+        //prevenir que no recargue la pagina
+        event.preventDefault();
+
+        //eliminar la sala
+        eliminarSala();
     });
-
 });

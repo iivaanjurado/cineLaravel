@@ -24,6 +24,10 @@
         {
             "src": "/js/(.*)",
             "dest": "/insertarSala.js"
+        },
+        {
+            "src": "/js/(.*)",
+            "dest": "/eliminarSala.js"
         }
 
     ],

@@ -27,14 +27,22 @@
         </div>
     </header>
 
-    <main class="flex-1 px-4 sm:px-8 py-6">
-        <div id="peliculas" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 overflow-y-auto">
+    <div class="flex items-center justify-between w-full">
+        <main class="flex-1 px-4 sm:px-8 py-6x">
+            <div id="peliculas" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 overflow-y-auto">
+            </div>
+            <div id="contenido"></div>
+        </main>
+        <div id="info-pelicula" class="hidden w-1/4">
+            <div id="detalle-pelicula"></div>
         </div>
-    </main>
-    <div id="contenido"></div>
-    <div id="info-pelicula" class="hidden">
-        <div id="detalle-pelicula"></div>
     </div>
+    
+    
+
+
+
+
 
     <footer class="bg-gray-300 py-4 w-full">
         <div class="flex flex-col items-center justify-center text-center space-y-4">

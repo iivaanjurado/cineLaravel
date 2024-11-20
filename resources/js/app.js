@@ -66,7 +66,7 @@ function mostrarAsientos(idSala) {
     cartelera.style.display = "none";
 
     //pintar el boton de atrás y el titulo de la sala donde se encuentra
-    contenido.innerHTML = `<div class="flex justify-between items-center mb-4"><button id="atras" class="px-4 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600">Atrás</button><h2 class="text-xl font-semibold">Asientos Disponibles en la sala ${idSala}</h2> </div>`;
+    contenido.innerHTML = `<div class="mb-4"><button id="atras" class="flex justify-center items-center ml-4 px-4 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600">Atrás</button><h2 class="flex justify-center items-center text-xl flex font-semibold">Asientos Disponibles en la sala ${idSala}</h2> </div>`;
 
     //agregar el boton de atras
     const botonAtras = document.getElementById("atras");
@@ -76,7 +76,7 @@ function mostrarAsientos(idSala) {
     });
 
     //realizar la llamada a la API
-    fetch(`${apiSelectSala}/${idSala}`)
+    fetch(`${apiSelectSala}${idSala}`)
         .then((response) => {
             if (!response.ok) {
                 throw new Error(
@@ -173,13 +173,17 @@ function renderizarAsientosGrid(asientos) {
     const botonReservar = document.createElement("button");
     botonReservar.textContent = "Reservar";
     botonReservar.classList.add(
-        "mt-6",
+        "flex",
+        "items-center",
+        "justify-center",
+        "m-6",
         "px-4",
         "py-2",
         "bg-blue-500",
         "text-white",
         "rounded-md",
-        "hover:bg-blue-600"
+        "hover:bg-blue-600",
+        "mx-auto"
     );
     contenido.appendChild(botonReservar);
 
@@ -207,7 +211,7 @@ function reservarAsientos(asientosSeleccionados) {
     //recorrer los asientos seleccionados
     asientosSeleccionados.forEach((idAsiento) => {
         // Hacemos la solicitud GET sin headers, body ni método adicional
-        fetch(`${reservarAsientos}${idAsiento}`)
+        fetch(`${apiReservarAsiento}${idAsiento}`)
             .then((response) => {
                 if (!response.ok) {
                     throw new Error("No se pudo reservar el asiento.");

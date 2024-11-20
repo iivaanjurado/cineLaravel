@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         //realizar la llamada a la API
         fetch(apiSelectSalas)
-        ç
+        
             .then((response) => response.json())
 
             .then((data) => {

@@ -364,7 +364,8 @@ class SalaController extends Controller
             //manipulo respuesta e incluyo los errores de validación q lanza laravel
             $data = [
                 'message' => 'Error en la validación de datos',
-                'errors' => $validator->errors()
+                'errors' => $validator->errors(),
+                'success' => false
             ];
 
             //retorno respuesta json + codigo error en la solicitud
@@ -374,7 +375,10 @@ class SalaController extends Controller
             //elimino la tabla que corresponda al id, asientos se eliminan por cascade
             $sala = Sala::where('pelicula', $titulo)->first();
 
-            $b = $sala->delete();
+            $data = [
+                'message' => 'Sala eliminada con éxito',
+                'success' => true
+            ];
 
             if ($b) {
 
@@ -407,7 +411,8 @@ class SalaController extends Controller
             //manipulo respuesta e incluyo los errores de validación q lanza laravel
             $data = [
                 'message' => 'Error en la validación de datos',
-                'errors' => $validator->errors()
+                'errors' => $validator->errors(),
+                'success' => false
             ];
 
             //retorno respuesta json + codigo error en la solicitud
@@ -425,17 +430,24 @@ class SalaController extends Controller
                 //manipulo respuesta
                 $data = [
                     'errors' => ' No se encontró ninguna sala con ese id',
+                    'success' => false
                 ];
 
                 //retorno respuesta json + codigo estado solicitud exitosa
                 return response()->json($data, 200);
 
             } else {
+                //elimino asientos de la tabla antes por restricción (no delete on cascade)
+                // Asiento::where('idSala', $id)->delete();
 
                 //la elimino, delete no funciona con el conjunto d datos, necesita el registro
                 $b = $sala->delete();
 
-                if ($b) {
+                //elaboro el array de respuesta
+                $data = [
+                    'message' => 'Sala eliminada con éxito',
+                    'success' => true
+                ];
 
                     $data = [
                         'message' => 'Sala eliminada con éxito',
@@ -453,4 +465,6 @@ class SalaController extends Controller
             }
         }
     }
+
+
 }

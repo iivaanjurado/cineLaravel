@@ -1,6 +1,3 @@
-import './eliminarSala';
-import './insertarSala';
-import './modificarSala';
 
 //obtener los elementos del DOM
 const cartelera = document.querySelector("#peliculas");
@@ -198,6 +195,7 @@ function renderizarAsientosGrid(asientos) {
         //si hay 1 o mas asientos en el array llamar a la funcion para reservar los asientos
         if (asientosSeleccionados.length > 0) {
             reservarAsientos(asientosSeleccionados);
+
         }
         //si no mostrar un mensaje de error de que no se ha seleccionado ningun asiento
         else {
@@ -218,6 +216,7 @@ function reservarAsientos(asientosSeleccionados) {
     asientosSeleccionados.forEach((idAsiento) => {
         // Hacemos la solicitud GET sin headers, body ni método adicional
         fetch(`${apiReservarAsiento}${idAsiento}`)
+        
             .then((response) => {
                 if (!response.ok) {
                     throw new Error("No se pudo reservar el asiento.");
@@ -326,7 +325,8 @@ function mostrarDetallesPelicula(idSala) {
             infoPeliculaDiv.classList.remove("hidden");
         })
         .catch((error) => {
-            console.error("Error al obtener los detalles de la película:", error);
-            mostrarToast("Error al obtener los detalles de la película", "error");
+            console.error("Error al obtener las películas:", error);
+            mostrarToast("No se pudieron cargar las películas", "error");
         });
 }
+

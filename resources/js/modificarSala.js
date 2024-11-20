@@ -30,6 +30,12 @@ function cargarPeliculas() {
             console.log(data);
             let selectPeliculas = document.querySelector('#movie');
 
+            //limpiar las opciones de las peliculas
+            while (selectPeliculas.options.length > 1) {
+                selectPeliculas.remove(1);
+            }
+
+
             //limpiar el select
             selectPeliculas.remove(1);
 
@@ -58,6 +64,8 @@ function cargarDetallesPelicula(event) {
 
     //si no se selecciona ninguna pelicula, no hacer nada
     if (!movieId) {
+
+        mostrarToast('Por favor seleccione una película.','error');
         return;
     }
 
@@ -77,10 +85,16 @@ function cargarDetallesPelicula(event) {
                 document.getElementById('titulo').value = peliculaSeleccionada.pelicula;
                 document.getElementById('sinopsis').value = peliculaSeleccionada.sinopsis;
                 document.getElementById('enlace').value = peliculaSeleccionada.enlaceImg;
+                mostrarToast('Detalles de la película cargados.', 'success');
+            }
+            else{
+
+                mostrarToast('No se encontró información para la película seleccionada.', 'error');
             }
         })
         .catch(error => {
             console.error('Error al cargar los detalles de la película:', error);
+            mostrarToast('Hubo un problema al cargar los detalles de la película.', 'error');
         });
 }
 
@@ -93,7 +107,9 @@ function actualizarSala(event) {
 
     //comprobar que la pelicula seleccionada no sea nula
     if (!peliculaSeleccionada) {
-        alert('No se ha seleccionado ninguna película');
+
+        //mostrar un mensaje toast
+        mostrarToast('No se ha seleccionado ninguna película','error');
         return;
     }
 
@@ -115,9 +131,6 @@ function actualizarSala(event) {
         })
     }
 
-    console.log(datos)
-
-
     //llamada a la API para poder actualizar la sala
     fetch(apiUpdateSala, datos)
     .then(response => response.json())
@@ -125,15 +138,16 @@ function actualizarSala(event) {
         if (data.errors) {
             throw new Error('Error al actualizar la sala: ' + data.status);
         }
+
         console.log(data);
-        alert('Sala actualizada correctamente.');
+        mostrarToast('Sala actualizada correctamente.','success');
 
         //volver a cargar las peliculas y dejar los campos limpios
         cargarPeliculas();
     })
     .catch(error => {
         console.error('Error al actualizar la sala:', error);
-        alert('Hubo un problema al actualizar la sala.');
+        mostrarToast('Ha ocurrido un problema al actualizar la sala.','Error')
     });
 }
 
@@ -153,3 +167,31 @@ window.onload = function () {
 };
 
 })
+/*---------------------------FUNCION PARA MOSTRAR LOS MENSAJES TOAST---------------------- */
+function mostrarToast(message, type) {
+
+    //crear el cuerpo del mensaje Toast
+    const toast = document.createElement('div');
+    toast.classList.add('fixed', 'bottom-5', 'left-1/2', 'transform', '-translate-x-1/2', 'px-6', 'py-3', 'rounded-lg', 'text-white', 'shadow-lg', 'w-72', 'text-center');
+
+    // Definir los colores de fondo según el tipo
+    if (type === 'success') {
+        toast.classList.add('bg-green-500');
+    } else if (type === 'error') {
+        toast.classList.add('bg-red-500');
+    } else {
+        toast.classList.add('bg-gray-500');
+    }
+
+    //añadir el texto al contenido del mensaje
+    toast.textContent = message;
+
+    //añadir el toast
+    document.body.appendChild(toast);
+
+    //eliminar el toast a los 3 segundos
+    setTimeout(() => {
+        toast.remove();
+    }, 3000);
+}
+

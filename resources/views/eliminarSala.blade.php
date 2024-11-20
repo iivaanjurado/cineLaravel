@@ -32,7 +32,7 @@
             <h2 class="text-xl sm:text-2xl font-bold mb-6 text-center text-gray-800">Eliminar Sala</h2>
             <div class="mb-6">
                 <label for="movie" class="block mb-2 text-sm font-medium text-gray-700">Selecciona una película</label>
-                <select id="movie" name="movie" class="w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none focus:border-blue-500">
+                <select id="movie" name="movie" class="w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none focus:border-blue-500" >
                 </select>
             </div>
             <button type="submit" class="w-full bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">

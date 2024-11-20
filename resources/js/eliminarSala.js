@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         //realizar la llamada a la API
         fetch(apiSelectSalas)
-        
+
             .then((response) => response.json())
 
             .then((data) => {
@@ -38,6 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
             })
             .catch((error) => {
                 console.error("Error al cargar las películas:", error);
+                mostrarToast('Error al cargar las películas.','error');
             });
     }
 
@@ -53,7 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         //si no se ha elegido ninguna pelicula mostrar un mensaje de error
         if (!movieId) {
-            alert("Por favor, selecciona una película para eliminar.");
+            mostrarToast('No se ha seleccionado ninguna película, por favor selecciona una.','error');
             return;
         }
 
@@ -74,18 +75,18 @@ document.addEventListener("DOMContentLoaded", () => {
                     if (data.message) {
 
                         //mensaje para mostrar que se ha eliminado la pelicula
-                        alert("Película eliminada correctamente.");
+                        mostrarToast('Se ha eliminado la película correctamente','success');
 
                         //recargar la lista de peliculas
                         cargarPeliculas();
                     }
                     else {
-                        alert("Hubo un error al eliminar la película.");
+                        mostrarToast('Hubo un error al eliminar la película.','error');
                     }
                 })
                 .catch((error) => {
                     console.error("Error al eliminar la película:", error);
-                    alert("Hubo un problema al intentar eliminar la película.");
+                    mostrarToast('Hubo un error al eliminar la película.','error');
                 });
         }
     }
@@ -108,3 +109,32 @@ document.addEventListener("DOMContentLoaded", () => {
         eliminarSala();
     });
 });
+
+/*---------------------------FUNCION PARA MOSTRAR LOS MENSAJES TOAST---------------------- */
+function mostrarToast(message, type) {
+
+    //crear el cuerpo del mensaje Toast
+    const toast = document.createElement('div');
+    toast.classList.add('fixed', 'bottom-5', 'left-1/2', 'transform', '-translate-x-1/2', 'px-6', 'py-3', 'rounded-lg', 'text-white', 'shadow-lg', 'w-72', 'text-center');
+
+    // Definir los colores de fondo según el tipo
+    if (type === 'success') {
+        toast.classList.add('bg-green-500');
+    } else if (type === 'error') {
+        toast.classList.add('bg-red-500');
+    } else {
+        toast.classList.add('bg-gray-500');
+    }
+
+    //añadir el texto al contenido del mensaje
+    toast.textContent = message;
+
+    //añadir el toast
+    document.body.appendChild(toast);
+
+    //eliminar el toast a los 3 segundos
+    setTimeout(() => {
+        toast.remove();
+    }, 3000);
+}
+

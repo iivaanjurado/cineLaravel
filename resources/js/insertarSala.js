@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function () {
         .then(data => {
 
             //si se ha realizado correctamente, mostrar un mensaje
-            if (data.success) {
+            if (data.message === 'Sala creada con éxito') {
 
                 mostrarToast("Sala insertada exitosamente.", 'success');
 

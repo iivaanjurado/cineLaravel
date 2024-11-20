@@ -32,6 +32,9 @@
         </div>
     </main>
     <div id="contenido"></div>
+    <div id="info-pelicula" class="hidden">
+        <div id="detalle-pelicula"></div>
+    </div>
 
     <footer class="bg-gray-300 py-4 w-full">
         <div class="flex flex-col items-center justify-center text-center space-y-4">

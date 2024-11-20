@@ -53,6 +53,8 @@ function renderizarPeliculas(peliculas) {
         peliculaItem.addEventListener("click", () => {
             //llamar a la funcion para mostrar los asientos de la sala que se pasa por parametro
             mostrarAsientos(sala.id);
+            mostrarDetallesPelicula(sala.id)
+
         });
 
         //añadir el boton al container donde se encuentran todos los carteles
@@ -66,7 +68,7 @@ function mostrarAsientos(idSala) {
     cartelera.style.display = "none";
 
     //pintar el boton de atrás y el titulo de la sala donde se encuentra
-    contenido.innerHTML = `<div class="mb-4"><button id="atras" class="flex justify-center items-center ml-4 px-4 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600">Atrás</button><h2 class="flex justify-center items-center text-xl font-semibold">Asientos Disponibles en la sala ${idSala}</h2> </div>`;
+    contenido.innerHTML = `<div class="mb-4"><button id="atras" class="flex justify-center items-center ml-4 px-4 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600">Atrás</button><h2 class="flex justify-center items-center text-xl  font-semibold">Asientos Disponibles en la sala ${idSala}</h2> </div>`;
 
     //agregar el boton de atras
     const botonAtras = document.getElementById("atras");
@@ -240,19 +242,7 @@ function reservarAsientos(asientosSeleccionados) {
 function mostrarToast(message, type) {
     //crear el elemento
     const toast = document.createElement("div");
-    toast.classList.add(
-        "fixed",
-        "bottom-5",
-        "left-1/2",
-        "transform",
-        "-translate-x-1/2",
-        "px-6",
-        "py-3",
-        "rounded-lg",
-        "text-white",
-        "shadow-lg",
-        "w-72",
-        "text-center"
+    toast.classList.add("fixed","bottom-5","left-1/2","transform","-translate-x-1/2","px-6","py-3","rounded-lg","text-white","shadow-lg","w-72","text-center"
     );
 
     //si el tipo es succes aplicar un estilo
@@ -279,6 +269,10 @@ function volverAPeliculas() {
     //mostrar la cartelera de pelicula
     cartelera.style.display = "grid";
 
+    //ocultar los detalles de la pelicula
+    const infoPeliculaDiv = document.getElementById("info-pelicula");
+    infoPeliculaDiv.classList.add("hidden");
+    
     //limpiar los asientos
     contenido.innerHTML = "";
 
@@ -291,5 +285,44 @@ function volverAPeliculas() {
         })
         .catch((error) => {
             console.error("Error al obtener las películas:", error);
+        });
+}
+
+/*-------------FUNCION PARA MOSTRAR LOS DETALLES DE LA PELICULA CUANDO SE ACCEDEN A LOS ASIENTOS---------- */
+function mostrarDetallesPelicula(idSala) {
+
+    //llamada a la API para recoger los datos
+    fetch(`${apiSelectSala}${idSala}`)
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error("Error al obtener los detalles de la sala: " + response.status);
+            }
+            return response.json();
+        })
+        .then((data) => {
+
+            //obtener los datos
+            const sala = data.sala[0];
+
+            //obtener los elementos del DOM
+            const infoPeliculaDiv = document.getElementById("info-pelicula");
+            const detallePeliculaDiv = document.getElementById("detalle-pelicula");
+
+            //limpiar el contenedor
+            detallePeliculaDiv.innerHTML = "";
+
+            //añadir la informacion al contenedor
+            detallePeliculaDiv.innerHTML = `
+                <h2 class="text-2xl font-bold mb-4">${sala.pelicula}</h2>
+                <img src="${sala.enlaceImg}" alt="${sala.pelicula}" class="rounded-md mb-4">
+                <p class="mb-4"><strong>Sinopsis:</strong> ${sala.sinopsis}</p>
+            `;
+
+            //eliminar la clase hidden para que se pueda ver
+            infoPeliculaDiv.classList.remove("hidden");
+        })
+        .catch((error) => {
+            console.error("Error al obtener los detalles de la película:", error);
+            mostrarToast("Error al obtener los detalles de la película", "error");
         });
 }

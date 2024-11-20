@@ -10,8 +10,7 @@ class Sala extends Model
     use HasFactory;
     
     protected $primaryKey = 'id'; 
-    protected $fillable = ['pelicula'];
-    // Ocultar los campos created_at y updated_at no se incluirán en las respuestas JSON generadas por Eloquent
+    protected $fillable = ['pelicula','enlaceImg','sinopsis'];
     protected $hidden = ['created_at', 'updated_at'];
 
     public function asientos(){

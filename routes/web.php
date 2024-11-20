@@ -13,6 +13,12 @@ Route::get('/cartelera', function () {
 Route::get('/insertar-sala', function () {
     return view('insertarSala');
 });
+Route::get('/modificar-sala', function () {
+    return view('modificarSala');
+});
+Route::get('/eliminar-sala', function () {
+    return view('eliminarSala');
+});
 
 Route::get('/eliminar-sala', function () {
     return view('eliminarSala');

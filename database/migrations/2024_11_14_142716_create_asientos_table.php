@@ -17,12 +17,12 @@ return new class extends Migration
             $table->integer('columna');
             $table->boolean('reservado')->default(false); // true reservado, false libre
             $table->unsignedBigInteger(column: 'idSala');
-            $table->foreign(columns: 'idSala')->references('id')->on('salas')->onDelete('cascade'); //!add on delete cascade
+            $table->foreign(columns: 'idSala')->references('id')->on('salas')->onDelete('cascade');
             $table->timestamps();
 
         });
     }
-    
+
     /**
      * Reverse the migrations.
      */

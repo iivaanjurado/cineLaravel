@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Modificar Sala</title>
-    @vite(['resources/css/app.css','resources/js/app.js'])
+    @vite(['resources/css/app.css','resources/js/modificarSala.js'])
 </head>
 <body class="flex flex-col min-h-screen overflow-y-auto">
 
-    <div class="bg-gradient-to-l from-pink-400 to-blue-600 h-34 w-full flex items-center px-8 mb-6  ">
+    <div class="bg-gradient-to-l from-pink-400 to-blue-600 h-34 w-full flex items-center px-8 mb-6 ">
         <div class="flex-1 flex items-center">
             <a href="/cartelera"><img src="/logo.png" class="h-32" alt="FilmBox Logo"></a>
         </div>
@@ -27,25 +27,30 @@
 
     <div class="flex-grow flex items-center justify-center bg-gray-100 py-12">
 
-        <form action="" class="bg-white shadow-md rounded-lg p-8 max-w-md w-full">
+        <form action="" id="formulario-sala" class="bg-white shadow-md rounded-lg p-8 max-w-md w-full">
             <h2 class="text-2xl font-bold mb-6 text-center text-gray-800">Modificar Sala</h2>
+
             <div class="mb-4">
                 <label for="movie" class="block mb-2 text-sm font-medium text-gray-700">Selecciona una película</label>
                 <select id="movie" name="movie" class="w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none focus:border-blue-500">
                 </select>
             </div>
+
             <div class="mb-4">
                 <label for="titulo" class="block mb-2 text-sm font-medium text-gray-700">Titulo:</label>
-                <input class="w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none focus:border-blue-500" type="text" name="titulo" id="titulo">
+                <input class="w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none focus:border-blue-500" type="text" name="titulo" id="titulo" required>
             </div>
+
             <div class="mb-4">
                 <label for="enlace" class="block mb-2 text-sm font-medium text-gray-700">Url:</label>
-                <input class="w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none focus:border-blue-500" type="text" name="enlace" id="enlace">
+                <input class="w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none focus:border-blue-500" type="text" name="enlace" id="enlace" required>
             </div>
+
             <div class="mb-6">
                 <label for="sinopsis" class="block mb-2 text-sm font-medium text-gray-700">Sinopsis:</label>
-                <textarea class="w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none focus:border-blue-500" name="sinopsis" id="sinopsis" rows="4"></textarea>
+                <textarea class="w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none focus:border-blue-500" name="sinopsis" id="sinopsis" rows="4" required></textarea>
             </div>
+
             <button type="submit" class="w-full bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
                 Modificar sala
             </button>

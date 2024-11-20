@@ -66,7 +66,7 @@ function mostrarAsientos(idSala) {
     cartelera.style.display = "none";
 
     //pintar el boton de atrás y el titulo de la sala donde se encuentra
-    contenido.innerHTML = `<div class="mb-4"><button id="atras" class="flex justify-center items-center ml-4 px-4 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600">Atrás</button><h2 class="flex justify-center items-center text-xl flex font-semibold">Asientos Disponibles en la sala ${idSala}</h2> </div>`;
+    contenido.innerHTML = `<div class="mb-4"><button id="atras" class="flex justify-center items-center ml-4 px-4 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600">Atrás</button><h2 class="flex justify-center items-center text-xl font-semibold">Asientos Disponibles en la sala ${idSala}</h2> </div>`;
 
     //agregar el boton de atras
     const botonAtras = document.getElementById("atras");

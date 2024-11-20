@@ -20,20 +20,7 @@
         {
             "src": "/(.*)",
             "dest": "/api/index.php"
-        },
-        {
-            "src": "/(.*)",
-            "dest": "/api.php"
-        },
-        {
-            "src": "/js/(.*)",
-            "dest": "/insertarSala.js"
-        },
-        {
-            "src": "/js/(.*)",
-            "dest": "/eliminarSala.js"
         }
-
     ],
     "env": {
         "APP_ENV": "production",

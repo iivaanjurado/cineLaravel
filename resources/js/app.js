@@ -1,3 +1,7 @@
+import './eliminarSala';
+import './insertarSala';
+import './modificarSala';
+
 //obtener los elementos del DOM
 const cartelera = document.querySelector("#peliculas");
 const contenido = document.querySelector("#contenido");

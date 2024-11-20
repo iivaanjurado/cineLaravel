@@ -208,6 +208,7 @@ class SalaController extends Controller
 
             //retorno respuesta json + codigo error en la solicitud
             return response()->json($data, 400);
+            
         } else { //si validación correcta
 
             //insert registro sala y registros asientos
@@ -219,7 +220,7 @@ class SalaController extends Controller
             $sala->pelicula = $titulo;
 
             //?podria gettear el id de la sala en éste punto? no hay store asiq no se ha generado, si save la variable no conoce aun el valor, hay que hacer select (143)
-            //guardo 
+            //guardo
             $sala->save();
 
             //con tabla sala creada, creo tabla asientos
@@ -284,10 +285,10 @@ class SalaController extends Controller
         //valido la entrada
         // $validator = Validator::make($request->all())
         $validator = Validator::make($request->all(), [
-            'pelicula' => 'required | string | max:255',
+            'titulo' => 'required | string | max:255',
             'sinopsis' => 'required | string | max:255',
-            'enlaceImg' => 'required | url | string | max:255'
-        ], []);
+            'enlace' => 'required | string | max:255'
+        ]);
 
 
         if ($validator->fails()) {
@@ -336,7 +337,8 @@ class SalaController extends Controller
                         'errors' => 'Error en la consulta, sala no actualizada'
                     ];
 
-                    return response()->json($data, 400);
+                    return response()->json($data, 200);
+
                 }
             }
         }
@@ -422,11 +424,12 @@ class SalaController extends Controller
 
                 //manipulo respuesta
                 $data = [
-                    'message' => ' No se encontró ninguna sala con ese id',
+                    'errors' => ' No se encontró ninguna sala con ese id',
                 ];
 
                 //retorno respuesta json + codigo estado solicitud exitosa
                 return response()->json($data, 200);
+
             } else {
 
                 //la elimino, delete no funciona con el conjunto d datos, necesita el registro

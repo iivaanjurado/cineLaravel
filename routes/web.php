@@ -6,13 +6,22 @@ use App\Http\Controllers\SalaController;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/cartelera', function () {
+    return view('cartelera');
+});
 
-
-Route::get('/prueba', function () {
-    return view('vistaPrueba');
+Route::get('/insertar-sala', function () {
+    return view('insertarSala');
+});
+Route::get('/modificar-sala', function () {
+    return view('modificarSala');
+});
+Route::get('/eliminar-sala', function () {
+    return view('eliminarSala');
 });
 
 
 // -----------------------rutas api-controlador
 
 Route::get('/demo_select', [SalaController::class, 'select']);
+

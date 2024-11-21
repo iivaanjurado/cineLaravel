@@ -228,6 +228,10 @@ function reservarAsientos(asientosSeleccionados) {
                 //si recibe el mensaje de asiento reservado desde la API
                 if (data.message === "Asiento actualizado con \u00e9xito") {
                     mostrarToast("Asiento reservado exitosamente", "success");
+
+                    //cuando se reserven asientos volver a la cartelera
+                    volverAPeliculas();
+
                 } else {
                     mostrarToast(
                         "No ha sido posible reservar el asiento",

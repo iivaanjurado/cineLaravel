@@ -12,7 +12,7 @@
     <header class="bg-gradient-to-l from-pink-400 to-blue-600 py-4 w-full px-4 sm:px-8 mb-6">
         <div class="flex flex-wrap items-center justify-between">
             <div class="w-full sm:w-auto mb-4 sm:mb-0 flex justify-center sm:justify-start">
-                <a href="/cartelera"><img src='./logo.png' class="h-24 sm:h-32" alt="FilmBox Logo"></a>
+                <a href="/cartelera"><img src={{ asset('logo.png') }} class="h-24 sm:h-32" alt="FilmBox Logo"></a>
             </div>
             <div class="w-full sm:w-auto mb-4 sm:mb-0 text-center">
                 <a href="/cartelera">
@@ -48,13 +48,13 @@
         <div class="flex flex-col items-center justify-center text-center space-y-4">
             <div class="flex flex-wrap justify-center space-x-4 sm:space-x-6">
                 <div class="bg-white p-2 rounded-full">
-                    <img class="h-4 w-4" src="/instagram.png" alt="Instagram">
+                    <img class="h-4 w-4" src="{{ asset('instagram.png') }}" alt="Instagram">
                 </div>
                 <div class="bg-white p-2 rounded-full">
-                    <img class="h-4 w-4" src="/x.png" alt="X">
+                    <img class="h-4 w-4" src={{ asset('x.png') }} alt="X">
                 </div>
                 <div class="bg-white p-2 rounded-full">
-                    <img class="h-4 w-4" src="/facebook.png" alt="Facebook">
+                    <img class="h-4 w-4" src={{ asset('facebook.png') }} alt="Facebook">
                 </div>
             </div>
 

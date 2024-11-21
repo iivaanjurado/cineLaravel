@@ -6,7 +6,7 @@ const contenido = document.querySelector("#contenido");
 //EndPoints de la API
 const Api_select = "/api/select_salas";
 const apiSelectSala = "/api/select_sala_id/";
-const apiReservarAsiento = "api/reservar_asiento/";
+const apiReservarAsiento = "/api/reservar_asiento/";
 
 //llamada a la API
 fetch(Api_select)
@@ -216,7 +216,7 @@ function reservarAsientos(asientosSeleccionados) {
     asientosSeleccionados.forEach((idAsiento) => {
         // Hacemos la solicitud GET sin headers, body ni método adicional
         fetch(`${apiReservarAsiento}${idAsiento}`)
-        
+
             .then((response) => {
                 if (!response.ok) {
                     throw new Error("No se pudo reservar el asiento.");

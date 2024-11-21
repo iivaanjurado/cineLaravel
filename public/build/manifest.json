@@ -1,0 +1,31 @@
+{
+  "resources/css/app.css": {
+    "file": "assets/app-DBMLUz94.css",
+    "src": "resources/css/app.css",
+    "isEntry": true
+  },
+  "resources/js/app.js": {
+    "file": "assets/app-BqTJcXde.js",
+    "name": "app",
+    "src": "resources/js/app.js",
+    "isEntry": true
+  },
+  "resources/js/eliminarSala.js": {
+    "file": "assets/eliminarSala-DbkBHzX9.js",
+    "name": "eliminarSala",
+    "src": "resources/js/eliminarSala.js",
+    "isEntry": true
+  },
+  "resources/js/insertarSala.js": {
+    "file": "assets/insertarSala-CGLG7DPz.js",
+    "name": "insertarSala",
+    "src": "resources/js/insertarSala.js",
+    "isEntry": true
+  },
+  "resources/js/modificarSala.js": {
+    "file": "assets/modificarSala-BgpIH3UH.js",
+    "name": "modificarSala",
+    "src": "resources/js/modificarSala.js",
+    "isEntry": true
+  }
+}

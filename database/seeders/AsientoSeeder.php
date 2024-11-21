@@ -23,11 +23,10 @@ class AsientoSeeder extends Seeder
         foreach ($salas as $sala) {
             for ($fila = 1; $fila <= $numFilas; $fila++) {
                 for ($col = 1; $col <= $numColumnas; $col++) {
-                    Asiento::create([
+                    $sala->asientos()->create([
                         'fila' => $fila,
                         'columna' => $col,
                         'reservado' => $estado,
-                        'idSala' => $sala->id,
                     ]);
                 }
             }
